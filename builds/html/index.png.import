@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bx03y1qt812m"
-path="res://.godot/imported/FriendFragger.icon.png-21d8dd3ec9d1306b96acc64fe5874a4f.ctex"
+uid="uid://542hhwxvvujy"
+path="res://.godot/imported/index.png-504b80ceb1386504c6d1c84a623c7019.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_builds/html/FriendFragger.icon.png"
-dest_files=["res://.godot/imported/FriendFragger.icon.png-21d8dd3ec9d1306b96acc64fe5874a4f.ctex"]
+source_file="res://builds/html/index.png"
+dest_files=["res://.godot/imported/index.png-504b80ceb1386504c6d1c84a623c7019.ctex"]
 
 [params]
 
