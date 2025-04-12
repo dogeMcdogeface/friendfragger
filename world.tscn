@@ -94,7 +94,7 @@ metadata/_edit_lock_ = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, -0.5, 0.5)
 layers = 1048574
 light_color = Color(1, 1, 0.34902, 1)
-light_energy = 20.0
+light_energy = 10.0
 light_cull_mask = 4294967294
 shadow_enabled = true
 spot_range = 25.0
@@ -261,6 +261,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_f3sb7")
 metadata/_edit_lock_ = true
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Entities/Node3D2"]
+visible = false
 layers = 993
 transparency = 0.9
 mesh = SubResource("PrismMesh_tlwt5")
@@ -282,6 +283,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_f3sb7")
 metadata/_edit_lock_ = true
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Entities/Node3D6"]
+visible = false
 layers = 993
 transparency = 1.0
 mesh = SubResource("PrismMesh_tlwt5")
@@ -316,6 +318,7 @@ layers = 16384
 
 [node name="MeshInstance3D2" parent="Entities/Node3D7" instance=ExtResource("4_aqk2v")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+visible = false
 layers = 6
 transparency = 1.0
 
@@ -352,6 +355,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_f3sb7")
 metadata/_edit_lock_ = true
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Entities/Node3D5"]
+visible = false
 layers = 993
 transparency = 0.91
 mesh = SubResource("BoxMesh_fj7yv")
