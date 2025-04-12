@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://vvcjqlktryqv"]
+
+[ext_resource type="Script" uid="uid://ccsbdm0v4icfg" path="res://billboard_renderer.gd" id="1_6thnn"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_6thnn"]
+resource_local_to_scene = true
+lightmap_size_hint = Vector2i(12, 12)
+size = Vector2(2, 2)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6thnn"]
+viewport_path = NodePath("BillboardViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_036b0"]
+resource_local_to_scene = true
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_6thnn")
+heightmap_scale = -0.393
+disable_receive_shadows = true
+billboard_mode = 2
+grow_amount = 0.719
+point_size = 78.9
+
+[sub_resource type="BoxMesh" id="BoxMesh_6thnn"]
+
+[node name="BillboardRenderer" type="Node3D"]
+script = ExtResource("1_6thnn")
+rotation_snapping = 12.0
+metadata/_edit_lock_ = true
+
+[node name="BillboardMesh" type="MeshInstance3D" parent="."]
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("QuadMesh_6thnn")
+skeleton = NodePath("../../MeshInstance3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_036b0")
+metadata/_edit_lock_ = true
+
+[node name="BillboardViewport" type="SubViewport" parent="."]
+transparent_bg = true
+handle_input_locally = false
+gui_disable_input = true
+size = Vector2i(1024, 1024)
+
+[node name="Gizmo" type="Node3D" parent="BillboardViewport"]
+metadata/_edit_lock_ = true
+
+[node name="Camera3D" type="Camera3D" parent="BillboardViewport/Gizmo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.65953)
+cull_mask = 1048544
+projection = 1
+fov = 37.8493
+size = 2.0
+far = 3.27
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BillboardViewport/Gizmo"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 2, 0, 0.00745368, 1.05296)
+layers = 2
+mesh = SubResource("BoxMesh_6thnn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BillboardViewport/Gizmo/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.05, 0, 1.56557, 0.452946)
+layers = 2
+mesh = SubResource("BoxMesh_6thnn")

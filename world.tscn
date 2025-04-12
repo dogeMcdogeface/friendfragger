@@ -1,0 +1,365 @@
+[gd_scene load_steps=24 format=3 uid="uid://daxlpaiu1ely0"]
+
+[ext_resource type="Texture2D" uid="uid://bnh5ekeipeo8n" path="res://icon.svg" id="1_f3sb7"]
+[ext_resource type="PackedScene" uid="uid://vvcjqlktryqv" path="res://billboard_renderer.tscn" id="2_fj7yv"]
+[ext_resource type="Script" uid="uid://b1a01sph4cs7a" path="res://player.gd" id="3_tlwt5"]
+[ext_resource type="PackedScene" uid="uid://842tmgci7b5d" path="res://tractor.glb" id="4_aqk2v"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fj7yv"]
+height = 1.7
+
+[sub_resource type="PrismMesh" id="PrismMesh_fj7yv"]
+
+[sub_resource type="Animation" id="Animation_036b0"]
+length = 4.0
+loop_mode = 1
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Entities/Node3D2")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 2.03333, 1, 0, 1, 0, 4.37114e-08, 4, 1, 0, -0.0350861, 0, 0.999384)
+
+[sub_resource type="Animation" id="Animation_aqk2v"]
+resource_name = "new_animation"
+length = 4.0
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dwbse"]
+_data = {
+&"RESET": SubResource("Animation_036b0"),
+&"new_animation": SubResource("Animation_aqk2v")
+}
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_fj7yv"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fj7yv"]
+size = Vector2(20, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_aqk2v"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3sb7"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("1_f3sb7")
+
+[sub_resource type="BoxMesh" id="BoxMesh_036b0"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tlwt5"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_aqk2v"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_dwbse"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_fj7yv"]
+size = Vector3(0.5, 10, 0.5)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tlwt5"]
+bounce = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_tlwt5"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_aqk2v"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_tlwt5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aqk2v"]
+
+[node name="World" type="Node3D"]
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.80894, 7)
+script = ExtResource("3_tlwt5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_fj7yv")
+metadata/_edit_lock_ = true
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+cull_mask = 5
+current = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/Camera3D"]
+transform = Transform3D(0.3, 0, 1.11022e-16, 0, -4.37114e-08, -0.3, 0, 1, -1.31134e-08, -0.0233374, 0, 0.233193)
+cast_shadow = 0
+mesh = SubResource("PrismMesh_fj7yv")
+metadata/_edit_lock_ = true
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Player/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, -0.5, 0.5)
+layers = 1048574
+light_color = Color(1, 1, 0.34902, 1)
+light_energy = 20.0
+light_cull_mask = 4294967294
+shadow_enabled = true
+spot_range = 25.0
+spot_angle = 20.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_dwbse")
+}
+autoplay = "RESET"
+
+[node name="Map" type="Node3D" parent="."]
+
+[node name="Floor" type="StaticBody3D" parent="Map"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Floor"]
+shape = SubResource("WorldBoundaryShape3D_fj7yv")
+metadata/_edit_lock_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Floor"]
+layers = 3
+mesh = SubResource("PlaneMesh_fj7yv")
+metadata/_edit_lock_ = true
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="BillboarOmniLight3D" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.8737)
+light_cull_mask = 4294966273
+omni_range = 4096.0
+omni_attenuation = 0.0
+omni_shadow_mode = 0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(-0.931744, -0.337629, 0.133643, 0.20515, -0.185779, 0.960937, -0.299612, 0.922763, 0.242363, -4.15249, 7.67824, 0.31944)
+layers = 1048572
+light_color = Color(1, 0.443137, 1, 1)
+light_cull_mask = 4294967294
+shadow_enabled = true
+spot_range = 13.0
+spot_attenuation = -1.14
+spot_angle = 14.02
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(0.34085, -0.858715, 0.382661, 0.739949, 0.496126, 0.45424, -0.579911, 0.128322, 0.80451, 7.08921, 3.69948, 5.32273)
+layers = 1048574
+light_color = Color(1, 0.443137, 1, 1)
+light_cull_mask = 4294967294
+shadow_enabled = true
+spot_range = 13.0
+spot_attenuation = -1.14
+spot_angle = 14.02
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lights"]
+transform = Transform3D(0.955796, 0.258819, -0.139521, -0.0029615, 0.482963, 0.875636, 0.294015, -0.836516, 0.462381, 0, 6.69511, 4)
+layers = 1048572
+light_energy = 0.626
+light_indirect_energy = 1.323
+light_volumetric_fog_energy = 3.263
+light_angular_distance = 10.91
+light_cull_mask = 4294967294
+shadow_enabled = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
+layers = 1048572
+light_energy = 0.3
+light_indirect_energy = 7.06
+light_size = 100.0
+light_cull_mask = 4294967293
+omni_range = 4096.0
+omni_attenuation = 0.0
+
+[node name="Entities" type="Node3D" parent="."]
+
+[node name="Node3D" type="RigidBody3D" parent="Entities"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.901077, 0.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Entities/Node3D"]
+layers = 512
+mesh = SubResource("BoxMesh_aqk2v")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_f3sb7")
+metadata/_edit_lock_ = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Entities/Node3D"]
+visible = false
+layers = 993
+transparency = 1.0
+mesh = SubResource("BoxMesh_036b0")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_f3sb7")
+metadata/_edit_lock_ = true
+
+[node name="BillboardRenderer" parent="Entities/Node3D" instance=ExtResource("2_fj7yv")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Entities/Node3D"]
+shape = SubResource("BoxShape3D_tlwt5")
+
+[node name="Node3D3" type="RigidBody3D" parent="Entities"]
+transform = Transform3D(-1.30703e-08, 0.34202, 0.939693, 0.5, 0.813798, -0.296198, -0.866025, 0.469846, -0.17101, 1.99892, 2.5, -5)
+axis_lock_linear_x = true
+axis_lock_angular_z = true
+physics_material_override = SubResource("PhysicsMaterial_aqk2v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Entities/Node3D3"]
+layers = 992
+mesh = SubResource("BoxMesh_dwbse")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_f3sb7")
+metadata/_edit_lock_ = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Entities/Node3D3"]
+visible = false
+layers = 993
+transparency = 0.91
+mesh = SubResource("BoxMesh_fj7yv")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_f3sb7")
+metadata/_edit_lock_ = true
+
+[node name="BillboardRenderer" parent="Entities/Node3D3" instance=ExtResource("2_fj7yv")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Entities/Node3D3"]
+shape = SubResource("BoxShape3D_tlwt5")
+
+[node name="Node3D4" type="RigidBody3D" parent="Entities"]
+transform = Transform3D(-1.39091e-08, 0, 1, 0, 1, 0, -1, 0, -1.39091e-08, -3.30108, 2.5, -3)
+axis_lock_linear_x = true
+physics_material_override = SubResource("PhysicsMaterial_tlwt5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Entities/Node3D4"]
+layers = 992
+mesh = SubResource("SphereMesh_tlwt5")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_f3sb7")
+metadata/_edit_lock_ = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Entities/Node3D4"]
+visible = false
+layers = 993
+transparency = 0.91
+mesh = SubResource("BoxMesh_fj7yv")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_f3sb7")
+metadata/_edit_lock_ = true
+
+[node name="BillboardRenderer" parent="Entities/Node3D4" instance=ExtResource("2_fj7yv")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Entities/Node3D4"]
+shape = SubResource("SphereShape3D_aqk2v")
+
+[node name="Node3D2" type="Node3D" parent="Entities"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.09892, 0.6, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Entities/Node3D2"]
+layers = 994
+ignore_occlusion_culling = true
+gi_mode = 2
+mesh = SubResource("PrismMesh_tlwt5")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_f3sb7")
+metadata/_edit_lock_ = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Entities/Node3D2"]
+layers = 993
+transparency = 0.9
+mesh = SubResource("PrismMesh_tlwt5")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_f3sb7")
+metadata/_edit_lock_ = true
+
+[node name="BillboardRenderer" parent="Entities/Node3D2" instance=ExtResource("2_fj7yv")]
+
+[node name="Node3D6" type="Node3D" parent="Entities"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.09892, 0.6, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Entities/Node3D6"]
+layers = 992
+gi_mode = 2
+mesh = SubResource("PrismMesh_tlwt5")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_f3sb7")
+metadata/_edit_lock_ = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Entities/Node3D6"]
+layers = 993
+transparency = 1.0
+mesh = SubResource("PrismMesh_tlwt5")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_f3sb7")
+metadata/_edit_lock_ = true
+
+[node name="BillboardRenderer" parent="Entities/Node3D6" instance=ExtResource("2_fj7yv")]
+
+[node name="Node3D7" type="Node3D" parent="Entities"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.90108, 0.6, 0)
+
+[node name="MeshInstance3D" parent="Entities/Node3D7" instance=ExtResource("4_aqk2v")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+layers = 16384
+material_override = SubResource("StandardMaterial3D_aqk2v")
+
+[node name="wheel-front-right" parent="Entities/Node3D7/MeshInstance3D" index="0"]
+layers = 16384
+
+[node name="wheel-front-left" parent="Entities/Node3D7/MeshInstance3D" index="1"]
+layers = 16384
+
+[node name="wheel-back-right" parent="Entities/Node3D7/MeshInstance3D" index="2"]
+layers = 16384
+
+[node name="wheel-back-left" parent="Entities/Node3D7/MeshInstance3D" index="3"]
+layers = 16384
+
+[node name="body" parent="Entities/Node3D7/MeshInstance3D" index="4"]
+layers = 16384
+
+[node name="MeshInstance3D2" parent="Entities/Node3D7" instance=ExtResource("4_aqk2v")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+layers = 6
+transparency = 1.0
+
+[node name="wheel-front-right" parent="Entities/Node3D7/MeshInstance3D2" index="0"]
+layers = 6
+transparency = 1.0
+
+[node name="wheel-front-left" parent="Entities/Node3D7/MeshInstance3D2" index="1"]
+layers = 6
+transparency = 1.0
+
+[node name="wheel-back-right" parent="Entities/Node3D7/MeshInstance3D2" index="2"]
+layers = 6
+transparency = 1.0
+
+[node name="wheel-back-left" parent="Entities/Node3D7/MeshInstance3D2" index="3"]
+layers = 6
+transparency = 1.0
+
+[node name="body" parent="Entities/Node3D7/MeshInstance3D2" index="4"]
+layers = 6
+transparency = 1.0
+
+[node name="BillboardRenderer" parent="Entities/Node3D7" instance=ExtResource("2_fj7yv")]
+
+[node name="Node3D5" type="Node3D" parent="Entities"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.09892, 5, -6)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Entities/Node3D5"]
+layers = 992
+mesh = SubResource("BoxMesh_fj7yv")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_f3sb7")
+metadata/_edit_lock_ = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Entities/Node3D5"]
+layers = 993
+transparency = 0.91
+mesh = SubResource("BoxMesh_fj7yv")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_f3sb7")
+metadata/_edit_lock_ = true
+
+[node name="BillboardRenderer" parent="Entities/Node3D5" instance=ExtResource("2_fj7yv")]
+
+[editable path="Entities/Node3D7/MeshInstance3D"]
+[editable path="Entities/Node3D7/MeshInstance3D2"]
