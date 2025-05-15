@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://bysjiiipbk01l"]
+
+[ext_resource type="Script" uid="uid://dx2qcei8n22vm" path="res://monitor.gd" id="1_qh22o"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_qh22o"]
+resource_local_to_scene = true
+size = Vector3(0.92, 0.52, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0b4ue"]
+roughness = 0.35
+emission_enabled = true
+emission = Color(0, 0, 0.780392, 1)
+emission_energy_multiplier = 4.09
+clearcoat_roughness = 0.78
+
+[sub_resource type="BoxMesh" id="BoxMesh_fa1fk"]
+resource_local_to_scene = true
+size = Vector3(1.02, 0.62, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_km5ld"]
+albedo_color = Color(0, 0, 0, 1)
+roughness = 0.0
+emission = Color(0, 0, 0.780392, 1)
+
+[node name="Monitor" type="MeshInstance3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("BoxMesh_qh22o")
+surface_material_override/0 = SubResource("StandardMaterial3D_0b4ue")
+script = ExtResource("1_qh22o")
+
+[node name="Monitor_Border" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.72529e-09, 0, -0.00500011)
+mesh = SubResource("BoxMesh_fa1fk")
+surface_material_override/0 = SubResource("StandardMaterial3D_km5ld")

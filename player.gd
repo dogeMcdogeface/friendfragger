@@ -12,6 +12,12 @@ const JUMP_VELOCITY = 4.5
 @export var pitch_min : float = -50 ##min pitch in degrees.
 
 
+
+@export var kick_cooldown := 1.0  # seconds
+var _kick_cooldown_timer := 0.0
+@export var punch_cooldown := 0.2  # seconds
+var _punch_cooldown_timer := 0.0
+
 @export_range(0, 2, 1) var animationConstrained: int  = 0
 
 
@@ -43,6 +49,33 @@ func _physics_process(delta: float) -> void:
 		tmpVelocity = tmpVelocity.move_toward( Vector2.ZERO, speed) #uniform interpolation \
 		velocity.x = tmpVelocity.x
 		velocity.z = tmpVelocity.y
+		
+	_punch_cooldown_timer += delta
+	if Input.is_action_just_pressed("player_punch") and _punch_cooldown_timer > punch_cooldown:
+		_punch_cooldown_timer = 0
+		$AnimationPlayer.play("punch")
+		var closeObjects = $Head/Punch.get_overlapping_bodies()
+		print("punch ", closeObjects)
+		var punch_dir = -transform.basis.z.normalized() * 150
+		for o in closeObjects:
+			if o is RigidBody3D:
+				o.apply_central_impulse(punch_dir)
+				
+	_kick_cooldown_timer += delta
+	if Input.is_action_just_pressed("player_kick") and _kick_cooldown_timer > kick_cooldown:
+		_kick_cooldown_timer = 0
+		var closeObjects = $Kick.get_overlapping_bodies()
+		print("kick ", closeObjects)
+		var kick_dir = -transform.basis.z.normalized() * 150
+		for o in closeObjects:
+			if o is RigidBody3D:
+				var random_offset = Vector3(
+				randf_range(-0.5, 0.5),
+				0.5,
+				randf_range(-0.5, 0.5)
+				)
+				o.apply_impulse(kick_dir, random_offset )
+		
 
 	move_and_slide()
 	
