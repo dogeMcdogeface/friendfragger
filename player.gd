@@ -51,34 +51,42 @@ func _physics_process(delta: float) -> void:
 		velocity.z = tmpVelocity.y
 		
 	_punch_cooldown_timer += delta
-	if Input.is_action_just_pressed("player_punch") and _punch_cooldown_timer > punch_cooldown:
+	var isPlayingMelee = $AnimationKick.is_playing() or $AnimationPunch.is_playing()
+	if Input.is_action_just_pressed("player_punch") and _punch_cooldown_timer > punch_cooldown and !isPlayingMelee:
 		_punch_cooldown_timer = 0
-		$AnimationPlayer.play("punch")
-		var closeObjects = $Head/Punch.get_overlapping_bodies()
-		print("punch ", closeObjects)
-		var punch_dir = -transform.basis.z.normalized() * 150
-		for o in closeObjects:
-			if o is RigidBody3D:
-				o.apply_central_impulse(punch_dir)
+		punch()
 				
 	_kick_cooldown_timer += delta
-	if Input.is_action_just_pressed("player_kick") and _kick_cooldown_timer > kick_cooldown:
+	if Input.is_action_just_pressed("player_kick") and _kick_cooldown_timer > kick_cooldown and !isPlayingMelee:
 		_kick_cooldown_timer = 0
-		var closeObjects = $Kick.get_overlapping_bodies()
-		print("kick ", closeObjects)
-		var kick_dir = -transform.basis.z.normalized() * 150
-		for o in closeObjects:
-			if o is RigidBody3D:
-				var random_offset = Vector3(
-				randf_range(-0.5, 0.5),
-				0.5,
-				randf_range(-0.5, 0.5)
-				)
-				o.apply_impulse(kick_dir, random_offset )
+		kick()
 		
 
 	move_and_slide()
-	
+
+func kick():
+	$AnimationKick.play("kick")
+	var closeObjects = $Kick.get_overlapping_bodies()
+	print("kick ", closeObjects)
+	var kick_dir = -transform.basis.z.normalized() * 150
+	for o in closeObjects:
+		if o is RigidBody3D:
+			var random_offset = Vector3(
+			randf_range(-0.5, 0.5),
+			0.5,
+			randf_range(-0.5, 0.5)
+			)
+			o.apply_impulse(kick_dir, random_offset )
+
+func punch():
+	$AnimationPunch.play("punch")
+	var closeObjects = $Head/Punch.get_overlapping_bodies()
+	print("punch ", closeObjects)
+	var punch_dir = -transform.basis.z.normalized() * 150
+	for o in closeObjects:
+		if o is RigidBody3D:
+			o.apply_central_impulse(punch_dir)
+
 	
 func _unhandled_input(event)-> void:
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:

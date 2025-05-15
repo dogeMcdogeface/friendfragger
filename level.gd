@@ -18,3 +18,5 @@ func _unhandled_input(event)-> void:
 	if event is InputEventKey:
 		if event.is_action_pressed("ui_cancel") or event.is_action_pressed("ui_abscond"):
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	if event.is_action_pressed("ui_skip_debug"):
+		$Animation_Env.speed_scale = 1000
