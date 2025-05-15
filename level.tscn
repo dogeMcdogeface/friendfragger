@@ -1,0 +1,709 @@
+[gd_scene load_steps=27 format=3 uid="uid://qvsdq2m36mgy"]
+
+[ext_resource type="Script" uid="uid://b83x6x6j0y7y4" path="res://level.gd" id="1_0b4ue"]
+[ext_resource type="Texture2D" uid="uid://deto5n4mu5cpb" path="res://Textures/Light/texture_03.png" id="1_oi3di"]
+[ext_resource type="Script" uid="uid://bhilr0ju5o28p" path="res://player.gd" id="1_u52ul"]
+[ext_resource type="Texture2D" uid="uid://d4cadj33j32mg" path="res://Textures/Light/texture_07.png" id="2_0b4ue"]
+[ext_resource type="FontFile" uid="uid://doak5knanen" path="res://Fonts/Orbitron/static/Orbitron-Black.ttf" id="5_f2txt"]
+
+[sub_resource type="Animation" id="Animation_1ainy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Monitor/Tutorial Text/SPIRE/SPIRE1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Monitor/Tutorial Text/SPIRE/SPIRE2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Monitor/Tutorial Text/SPIRE/SPIRE3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Monitor/Tutorial Text/CONTROLS1/MOUSEICON:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Monitor/Tutorial Text/CONTROLS1/LOOK:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Monitor/Tutorial Text/CONTROLS1/LMB:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Monitor/Tutorial Text/CONTROLS1/SHOOT:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Monitor/Tutorial Text/CONTROLS2/WASD:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Monitor/Tutorial Text/CONTROLS2/MOVE:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Monitor/Tutorial Text/CONTROLS2/SHIFT:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Monitor/Tutorial Text/CONTROLS2/RUN:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("OmniLight3D:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_f2txt"]
+resource_name = "Tutorial"
+length = 12.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Monitor/Tutorial Text/SPIRE/SPIRE1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Monitor/Tutorial Text/SPIRE/SPIRE2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Monitor/Tutorial Text/SPIRE/SPIRE3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Monitor/Tutorial Text/CONTROLS1/MOUSEICON:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 5, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Monitor/Tutorial Text/CONTROLS1/LOOK:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 5, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Monitor/Tutorial Text/CONTROLS1/LMB:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 6, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Monitor/Tutorial Text/CONTROLS1/SHOOT:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 6, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Monitor/Tutorial Text/CONTROLS2/WASD:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 9, 12),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Monitor/Tutorial Text/CONTROLS2/MOVE:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 9, 12),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Monitor/Tutorial Text/CONTROLS2/SHIFT:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 10, 12),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Monitor/Tutorial Text/CONTROLS2/RUN:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 10, 12),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n6hdu"]
+_data = {
+&"RESET": SubResource("Animation_1ainy"),
+&"Tutorial": SubResource("Animation_f2txt")
+}
+
+[sub_resource type="Animation" id="Animation_km5ld"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:animationConstrained")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("cryopod/cryopod_hinge:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_n6hdu"]
+resource_name = "Tutorial"
+length = 16.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:animationConstrained")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6, 12),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 1, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OmniLight3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 12.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("cryopod/cryopod_hinge:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 14, 15, 16),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, -1.48353, 0), Vector3(0, -3.36325, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i2t4f"]
+_data = {
+&"RESET": SubResource("Animation_km5ld"),
+&"Tutorial": SubResource("Animation_n6hdu")
+}
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5xgho"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_u52ul"]
+sky_material = SubResource("ProceduralSkyMaterial_5xgho")
+
+[sub_resource type="Environment" id="Environment_vonw3"]
+background_mode = 1
+background_energy_multiplier = 0.0
+sky = SubResource("Sky_u52ul")
+tonemap_mode = 2
+glow_enabled = true
+fog_light_energy = 0.0
+volumetric_fog_density = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i2t4f"]
+transparency = 1
+albedo_color = Color(0.596078, 1, 1, 0.431373)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8cye3"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f2txt"]
+albedo_texture = ExtResource("1_oi3di")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ainy"]
+albedo_texture = ExtResource("2_0b4ue")
+
+[sub_resource type="SphereMesh" id="SphereMesh_0b4ue"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n6hdu"]
+transparency = 1
+albedo_color = Color(1, 0.164706, 0, 0.364706)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5xgho"]
+radius = 0.3
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_u52ul"]
+radius = 0.3
+
+[sub_resource type="BoxMesh" id="BoxMesh_1ainy"]
+size = Vector3(10.2, 5.2, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_km5ld"]
+albedo_color = Color(0, 0, 0, 1)
+roughness = 0.0
+emission = Color(0, 0, 0.780392, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0b4ue"]
+size = Vector3(10, 5, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0b4ue"]
+roughness = 0.35
+emission_enabled = true
+emission = Color(0, 0, 0.780392, 1)
+emission_energy_multiplier = 4.09
+clearcoat_roughness = 0.78
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_0b4ue")
+
+[node name="Animation_TutorialText" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_n6hdu")
+}
+autoplay = "Tutorial"
+
+[node name="Animation_Env" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_i2t4f")
+}
+autoplay = "Tutorial"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.21526, 0)
+light_color = Color(1, 0.87451, 0.52549, 1)
+light_energy = 0.51
+omni_range = 14.3328
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vonw3")
+
+[node name="cryopod" type="Node3D" parent="."]
+
+[node name="OmniLight3D" type="SpotLight3D" parent="cryopod"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.972731, 4.52854)
+light_color = Color(1, 0.309804, 0, 1)
+shadow_enabled = true
+spot_range = 3.00182
+spot_angle = 43.7269
+spot_angle_attenuation = 0.101532
+
+[node name="cryopod_body" type="CSGCombiner3D" parent="cryopod"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0411325, 4.71752)
+cast_shadow = 2
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="cryopod/cryopod_body"]
+size = Vector3(1, 2, 0.8)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="cryopod/cryopod_body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.4)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="cryopod/cryopod_body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.988534, -0.4)
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="cryopod/cryopod_body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.685788)
+operation = 2
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="cryopod/cryopod_body/CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.113971)
+
+[node name="cryopod_hinge" type="Node3D" parent="cryopod"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.490924, 0, 4.2287)
+
+[node name="cryopod_door" type="CSGCylinder3D" parent="cryopod/cryopod_hinge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.490924, -0.0411325, -0.0521359)
+use_collision = true
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="cryopod/cryopod_hinge/cryopod_door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.113971)
+operation = 2
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="cryopod/cryopod_hinge/cryopod_door/CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.196474)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="cryopod/cryopod_hinge/cryopod_door/CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.535372, 0)
+size = Vector3(0.8, 0.5, 1)
+
+[node name="cryopod_window" type="CSGCylinder3D" parent="cryopod/cryopod_hinge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.490924, -0.0411325, -0.0749464)
+use_collision = true
+flip_faces = true
+material = SubResource("StandardMaterial3D_i2t4f")
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="cryopod/cryopod_hinge/cryopod_window"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.113971)
+operation = 2
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="cryopod/cryopod_hinge/cryopod_window/CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.196474)
+layers = 0
+flip_faces = true
+material = SubResource("StandardMaterial3D_8cye3")
+
+[node name="CSGCombiner3D3" type="CSGCombiner3D" parent="cryopod/cryopod_hinge/cryopod_window"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.113971)
+operation = 1
+
+[node name="CSGBox3D" type="CSGBox3D" parent="cryopod/cryopod_hinge/cryopod_window/CSGCombiner3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.535372, 0)
+flip_faces = true
+size = Vector3(0.8, 0.5, 1)
+
+[node name="Room" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+operation = 2
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Room"]
+visible = false
+flip_faces = true
+size = Vector3(10, 6, 10)
+material = SubResource("StandardMaterial3D_f2txt")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Room"]
+flip_faces = true
+size = Vector3(10.2, 6.2, 10.2)
+material = SubResource("StandardMaterial3D_1ainy")
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.18722)
+script = ExtResource("1_u52ul")
+speed_air = 0.05
+mouse_sensitivity_y = 0.745
+animationConstrained = true
+
+[node name="Head" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+metadata/_edit_lock_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+layers = 2
+mesh = SubResource("SphereMesh_0b4ue")
+surface_material_override/0 = SubResource("StandardMaterial3D_n6hdu")
+metadata/_edit_lock_ = true
+
+[node name="Camera3D" type="Camera3D" parent="Player/Head"]
+cull_mask = 1048573
+current = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_5xgho")
+metadata/_edit_lock_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+mesh = SubResource("CapsuleMesh_u52ul")
+metadata/_edit_lock_ = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.738173, 0.308814, -0.599779, 0, 0.889073, 0.457765, 0.674612, -0.33791, 0.65629, -3.14885, 3.29521, 3.4484)
+
+[node name="Monitor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.64145, -5.05282)
+mesh = SubResource("BoxMesh_1ainy")
+surface_material_override/0 = SubResource("StandardMaterial3D_km5ld")
+
+[node name="Monitor_Screen" type="MeshInstance3D" parent="Monitor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00105333)
+mesh = SubResource("BoxMesh_0b4ue")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_0b4ue")
+
+[node name="Tutorial Text" type="Node3D" parent="Monitor"]
+
+[node name="SPIRE" type="Node3D" parent="Monitor/Tutorial Text"]
+
+[node name="SPIRE1" type="Label3D" parent="Monitor/Tutorial Text/SPIRE"]
+transform = Transform3D(1, 0, 0, 0, 1.7, 0, 0, 0, 1, 0, 1.5, 0.111053)
+visible = false
+text = "DEFEND THE SPIRE"
+font = ExtResource("5_f2txt")
+font_size = 170
+outline_size = 0
+
+[node name="SPIRE2" type="Label3D" parent="Monitor/Tutorial Text/SPIRE"]
+transform = Transform3D(1, 0, 0, 0, 1.7, 0, 0, 0, 1, 0, 0, 0.111053)
+visible = false
+text = "DEFEND THE SPIRE"
+font = ExtResource("5_f2txt")
+font_size = 170
+outline_size = 0
+
+[node name="SPIRE3" type="Label3D" parent="Monitor/Tutorial Text/SPIRE"]
+transform = Transform3D(1, 0, 0, 0, 1.7, 0, 0, 0, 1, 0, -1.5, 0.111053)
+visible = false
+text = "DEFEND THE SPIRE"
+font = ExtResource("5_f2txt")
+font_size = 170
+outline_size = 0
+
+[node name="CONTROLS1" type="Node3D" parent="Monitor/Tutorial Text"]
+
+[node name="MOUSEICON" type="Label3D" parent="Monitor/Tutorial Text/CONTROLS1"]
+transform = Transform3D(1, 0, 0, 0, 1.7, 0, 0, 0, 1, -2.66581, 0.779442, 0.111053)
+visible = false
+text = "🖱"
+font = ExtResource("5_f2txt")
+font_size = 150
+outline_size = 0
+line_spacing = -50.0
+
+[node name="LOOK" type="Label3D" parent="Monitor/Tutorial Text/CONTROLS1"]
+transform = Transform3D(1, 0, 0, 0, 1.7, 0, 0, 0, 1, -0.440757, 0.817692, 0.111053)
+visible = false
+text = "⇒  LOOK"
+font = ExtResource("5_f2txt")
+font_size = 170
+outline_size = 0
+horizontal_alignment = 0
+
+[node name="LMB" type="Label3D" parent="Monitor/Tutorial Text/CONTROLS1"]
+transform = Transform3D(1, 0, 0, 0, 1.7, 0, 0, 0, 1, -2.66581, -1.55854, 0.111053)
+visible = false
+text = "LMB"
+font = ExtResource("5_f2txt")
+font_size = 150
+outline_size = 0
+
+[node name="SHOOT" type="Label3D" parent="Monitor/Tutorial Text/CONTROLS1"]
+transform = Transform3D(1, 0, 0, 0, 1.7, 0, 0, 0, 1, -0.440757, -1.4272, 0.111053)
+visible = false
+text = "⇒  SHOOT"
+font = ExtResource("5_f2txt")
+font_size = 170
+outline_size = 0
+horizontal_alignment = 0
+
+[node name="CONTROLS2" type="Node3D" parent="Monitor/Tutorial Text"]
+
+[node name="WASD" type="Label3D" parent="Monitor/Tutorial Text/CONTROLS2"]
+transform = Transform3D(1, 0, 0, 0, 1.7, 0, 0, 0, 1, -2.66581, 1.02951, 0.111053)
+visible = false
+text = "W
+A S D 
+"
+font = ExtResource("5_f2txt")
+font_size = 150
+outline_size = 0
+line_spacing = -50.0
+
+[node name="MOVE" type="Label3D" parent="Monitor/Tutorial Text/CONTROLS2"]
+transform = Transform3D(1, 0, 0, 0, 1.7, 0, 0, 0, 1, -0.440757, 0.817692, 0.111053)
+visible = false
+text = "⇒  MOVE"
+font = ExtResource("5_f2txt")
+font_size = 170
+outline_size = 0
+horizontal_alignment = 0
+
+[node name="SHIFT" type="Label3D" parent="Monitor/Tutorial Text/CONTROLS2"]
+transform = Transform3D(1, 0, 0, 0, 1.7, 0, 0, 0, 1, -2.66581, -1.55854, 0.111053)
+visible = false
+text = "Shift"
+font = ExtResource("5_f2txt")
+font_size = 150
+outline_size = 0
+
+[node name="RUN" type="Label3D" parent="Monitor/Tutorial Text/CONTROLS2"]
+transform = Transform3D(1, 0, 0, 0, 1.7, 0, 0, 0, 1, -0.440757, -1.4272, 0.111053)
+visible = false
+text = "⇒  RUN"
+font = ExtResource("5_f2txt")
+font_size = 170
+outline_size = 0
+horizontal_alignment = 0
