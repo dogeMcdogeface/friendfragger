@@ -637,7 +637,7 @@ outline_size = 0
 [node name="MOUSEICON" type="Label3D" parent="Monitor/Tutorial Text/CONTROLS1"]
 transform = Transform3D(1, 0, 0, 0, 1.7, 0, 0, 0, 1, -2.66581, 0.779442, 0.111053)
 visible = false
-text = "🖱"
+text = "MOUSE"
 font = ExtResource("5_f2txt")
 font_size = 150
 outline_size = 0
