@@ -51,16 +51,18 @@ func _physics_process(delta: float) -> void:
 		velocity.z = tmpVelocity.y
 		
 	_punch_cooldown_timer += delta
-	var isPlayingMelee = $AnimationKick.is_playing() or $AnimationPunch.is_playing()
-	if Input.is_action_just_pressed("player_punch") and _punch_cooldown_timer > punch_cooldown and !isPlayingMelee:
+	var canPlayMelee = (animationConstrained == 0) and !$AnimationKick.is_playing() and !$AnimationPunch.is_playing()
+	if Input.is_action_just_pressed("player_punch") and _punch_cooldown_timer > punch_cooldown and canPlayMelee:
 		_punch_cooldown_timer = 0
 		punch()
 				
 	_kick_cooldown_timer += delta
-	if Input.is_action_just_pressed("player_kick") and _kick_cooldown_timer > kick_cooldown and !isPlayingMelee:
+	if Input.is_action_just_pressed("player_kick") and _kick_cooldown_timer > kick_cooldown and canPlayMelee:
 		_kick_cooldown_timer = 0
 		kick()
-		
+
+	if Input.is_action_just_pressed("player_throw"):
+		print("Throw")
 
 	move_and_slide()
 
@@ -68,6 +70,7 @@ func kick():
 	$AnimationKick.play("kick")
 	var closeObjects = $Kick.get_overlapping_bodies()
 	print("kick ", closeObjects)
+	playMeleeSound("Kick")
 	var kick_dir = -transform.basis.z.normalized() * 150
 	for o in closeObjects:
 		if o is RigidBody3D:
@@ -77,16 +80,36 @@ func kick():
 			randf_range(-0.5, 0.5)
 			)
 			o.apply_impulse(kick_dir, random_offset )
+		playMeleeSound(o.get_meta("MaterialType", "unknown"))
 
 func punch():
 	$AnimationPunch.play("punch")
 	var closeObjects = $Head/Punch.get_overlapping_bodies()
 	print("punch ", closeObjects)
+	playMeleeSound("Punch")
 	var punch_dir = -transform.basis.z.normalized() * 150
 	for o in closeObjects:
-		if o is RigidBody3D:
+		if o == self:
+			continue
+		if o.has_method("apply_central_impulse"):
 			o.apply_central_impulse(punch_dir)
+		playMeleeSound(o.get_meta("MaterialType", "unknown"))
+			
+		
 
+
+func playMeleeSound(meta):
+	print("playing hit sound: ",meta)
+	if(meta == "Punch"):
+		$AudioStreamPlayer3D_Punch.play()
+	if(meta == "Kick"):
+		$AudioStreamPlayer3D_Punch.play()
+	if(meta == "Metal"):
+		$AudioStreamPlayer3D_HitMetal.play()
+	if(meta == "MetalLight"):
+		$AudioStreamPlayer3D_HitMetalLight.play()
+	if(meta == "Wall"):
+		$AudioStreamPlayer3D_HitWall.play()
 	
 func _unhandled_input(event)-> void:
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:

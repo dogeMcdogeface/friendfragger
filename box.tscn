@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvs6lcufkyu2e"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1ainy"]
+friction = 5.0
+rough = true
+bounce = 0.11
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n6hdu"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8cye3"]
+
+[node name="Box" type="RigidBody3D"]
+collision_layer = 3
+collision_mask = 3
+mass = 22.0
+physics_material_override = SubResource("PhysicsMaterial_1ainy")
+metadata/MaterialType = "Metal"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_n6hdu")
+metadata/_edit_lock_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_8cye3")
+metadata/_edit_lock_ = true

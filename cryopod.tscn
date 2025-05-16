@@ -1,0 +1,88 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuaic7ink8ur"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i2t4f"]
+transparency = 1
+albedo_color = Color(0.596078, 1, 1, 0.431373)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8cye3"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[node name="cryopod" type="Node3D"]
+
+[node name="OmniLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.972731, -0.423878)
+light_color = Color(1, 0.309804, 0, 1)
+shadow_enabled = true
+spot_range = 3.00182
+spot_angle = 43.7269
+spot_angle_attenuation = 0.101532
+
+[node name="cryopod_body" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0411325, -0.234898)
+cast_shadow = 2
+use_collision = true
+metadata/MaterialType = "Metal"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="cryopod_body"]
+size = Vector3(1, 2, 0.8)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="cryopod_body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.4)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="cryopod_body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.988534, -0.4)
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="cryopod_body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.685788)
+operation = 2
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="cryopod_body/CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.113971)
+
+[node name="cryopod_hinge" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.490924, 0, -0.723718)
+
+[node name="cryopod_door" type="CSGCylinder3D" parent="cryopod_hinge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.490924, -0.0411325, -0.0521359)
+use_collision = true
+metadata/MaterialType = "Metal"
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="cryopod_hinge/cryopod_door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.113971)
+operation = 2
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="cryopod_hinge/cryopod_door/CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.196474)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="cryopod_hinge/cryopod_door/CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.436011, -0.18323)
+size = Vector3(0.6, 0.3, 1)
+
+[node name="cryopod_window" type="CSGCylinder3D" parent="cryopod_hinge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.490924, -0.0411325, -0.0749464)
+use_collision = true
+flip_faces = true
+material = SubResource("StandardMaterial3D_i2t4f")
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="cryopod_hinge/cryopod_window"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.113971)
+operation = 2
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="cryopod_hinge/cryopod_window/CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.196474)
+layers = 0
+flip_faces = true
+material = SubResource("StandardMaterial3D_8cye3")
+
+[node name="CSGCombiner3D3" type="CSGCombiner3D" parent="cryopod_hinge/cryopod_window"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.113971)
+operation = 1
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="cryopod_hinge/cryopod_window/CSGCombiner3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.436011, -0.18323)
+flip_faces = true
+size = Vector3(0.6, 0.3, 1)
+
+[node name="cryopod_hisser" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.402479, -0.117698)
