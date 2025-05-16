@@ -1,15 +1,21 @@
-[gd_scene load_steps=28 format=3 uid="uid://bxfo5t0jv7kbc"]
+[gd_scene load_steps=38 format=3 uid="uid://bxfo5t0jv7kbc"]
 
 [ext_resource type="Script" uid="uid://bhilr0ju5o28p" path="res://player.gd" id="1_4flbx"]
 [ext_resource type="ArrayMesh" uid="uid://0yip68oghp7j" path="res://models/Ranger/player_mesh.tres" id="2_onrkg"]
 [ext_resource type="AudioStream" uid="uid://cs51mgrbxh2yu" path="res://sounds/CrowbarHitHard.wav" id="3_hqtel"]
-[ext_resource type="AudioStream" uid="uid://cnafawdpgpvaf" path="res://sounds/CrowbarFire.wav" id="3_n7ghd"]
+[ext_resource type="AudioStream" uid="uid://xphk4r0o8jgf" path="res://sounds/punch/swing-001.ogg" id="3_op7ga"]
 [ext_resource type="AudioStream" uid="uid://cwntqnbmdpde6" path="res://sounds/PaperHit2.wav" id="3_sweqy"]
 [ext_resource type="AudioStream" uid="uid://ijgmx1npyhhr" path="res://sounds/RockHit1.wav" id="4_2hs0m"]
+[ext_resource type="AudioStream" uid="uid://dq8gux4nt1kdd" path="res://sounds/punch/swing-002.ogg" id="4_q13i1"]
 [ext_resource type="AudioStream" uid="uid://ryiyjjvuq3bl" path="res://sounds/MetalHit1.wav" id="4_sweqy"]
 [ext_resource type="AudioStream" uid="uid://dv25pbc5dn5f7" path="res://sounds/WoodHit1.wav" id="5_1jxqw"]
 [ext_resource type="AudioStream" uid="uid://cr768tt4a0jys" path="res://sounds/metal-barrel1.mp3" id="5_b26j0"]
+[ext_resource type="AudioStream" uid="uid://nkiq0tla23nm" path="res://sounds/punch/swing-004.ogg" id="5_pylmc"]
 [ext_resource type="AudioStream" uid="uid://dse1luxh6c85o" path="res://sounds/metal-barrel2.mp3" id="6_n7ghd"]
+[ext_resource type="AudioStream" uid="uid://djx3goljjst37" path="res://sounds/punch/hit-001.ogg" id="7_pbfsw"]
+[ext_resource type="AudioStream" uid="uid://b5i6hhq7aome3" path="res://sounds/punch/hit-004.ogg" id="8_5tmop"]
+[ext_resource type="AudioStream" uid="uid://wodvx23x7oew" path="res://sounds/CombatKnifeHitFlesh.wav" id="11_ivps1"]
+[ext_resource type="AudioStream" uid="uid://dqe1nkt0j03vy" path="res://sounds/CrowbarHitFlesh.wav" id="12_urp6f"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_0b4ue"]
 radius = 0.1
@@ -23,8 +29,11 @@ albedo_color = Color(1, 0.164706, 0, 0.364706)
 size = Vector3(0.640839, 0.705238, 0.895477)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5xgho"]
-radius = 0.3
+radius = 0.25
 height = 1.8
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u1c27"]
+size = Vector3(0.5, 0.5, 0.506836)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4flbx"]
 size = Vector3(0.640137, 1.03137, 0.94043)
@@ -577,6 +586,17 @@ bind/24/name = &"Axe"
 bind/24/bone = -1
 bind/24/pose = Transform3D(8.27665e-08, 0.997486, -0.0708672, -1.1363e-07, 0.0708672, 0.997486, 1, -7.46181e-08, 1.16041e-07, 0.0218421, -0.158335, -0.276802)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7ahtn"]
+streams_count = 3
+stream_0/stream = ExtResource("3_op7ga")
+stream_1/stream = ExtResource("4_q13i1")
+stream_2/stream = ExtResource("5_pylmc")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7lmhl"]
+streams_count = 2
+stream_0/stream = ExtResource("7_pbfsw")
+stream_1/stream = ExtResource("8_5tmop")
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_i3pqv"]
 playback_mode = 1
 random_pitch = 1.16
@@ -602,10 +622,20 @@ stream_0/stream = ExtResource("3_sweqy")
 stream_1/stream = ExtResource("4_2hs0m")
 stream_2/stream = ExtResource("5_1jxqw")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_n7ghd"]
+playback_mode = 1
+random_pitch = 1.16
+random_volume_offset_db = 1.97
+streams_count = 2
+stream_0/stream = ExtResource("11_ivps1")
+stream_1/stream = ExtResource("12_urp6f")
+stream_1/weight = 4.191
+
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_4flbx")
 speed_air = 0.05
 mouse_sensitivity_y = 0.745
+pitch_max = 75.0
 kick_cooldown = 0.8
 punch_cooldown = 0.1
 
@@ -656,8 +686,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.319138, 0.139339, -0.297287
 shape = SubResource("BoxShape3D_onrkg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-visible = false
 shape = SubResource("CapsuleShape3D_5xgho")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.464134, -0.00341797)
+shape = SubResource("BoxShape3D_u1c27")
 metadata/_edit_lock_ = true
 
 [node name="Kick" type="Area3D" parent="."]
@@ -900,7 +934,11 @@ skin = SubResource("Skin_sweqy")
 
 [node name="AudioStreamPlayer3D_Punch" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0585306, 0.543046, -0.662001)
-stream = ExtResource("3_n7ghd")
+stream = SubResource("AudioStreamRandomizer_7ahtn")
+
+[node name="AudioStreamPlayer3D_Kick" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0585306, 0.543046, -0.662001)
+stream = SubResource("AudioStreamRandomizer_7lmhl")
 
 [node name="AudioStreamPlayer3D_HitMetal" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0585306, 0.543046, -0.662001)
@@ -913,3 +951,7 @@ stream = SubResource("AudioStreamRandomizer_nvl01")
 [node name="AudioStreamPlayer3D_HitWall" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0585306, 0.543046, -0.662001)
 stream = SubResource("AudioStreamRandomizer_b26j0")
+
+[node name="AudioStreamPlayer3D_HitFlesh" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0585306, 0.543046, -0.662001)
+stream = SubResource("AudioStreamRandomizer_n7ghd")

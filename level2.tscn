@@ -1,0 +1,1286 @@
+[gd_scene load_steps=54 format=3 uid="uid://c4q2qgfk681lg"]
+
+[ext_resource type="Script" uid="uid://b83x6x6j0y7y4" path="res://level.gd" id="1_r8rrl"]
+[ext_resource type="Script" uid="uid://c6tvra3itmy4" path="res://sky.gd" id="2_4ou0f"]
+[ext_resource type="AudioStream" uid="uid://bwct06r3ilvfi" path="res://sounds/MedicalHiss.wav" id="2_lwvnx"]
+[ext_resource type="AudioStream" uid="uid://d2qfcmob2bjhg" path="res://sounds/MachineDoor1.wav" id="3_4ou0f"]
+[ext_resource type="Material" uid="uid://b7scdbeeqpsph" path="res://room_material.tres" id="4_4k5bj"]
+[ext_resource type="PackedScene" uid="uid://bysjiiipbk01l" path="res://monitor.tscn" id="5_hp87d"]
+[ext_resource type="FontFile" uid="uid://doak5knanen" path="res://Fonts/Orbitron/static/Orbitron-Black.ttf" id="6_gxpff"]
+[ext_resource type="Script" uid="uid://5gjakqv2sjhm" path="res://label_3d_countdown.gd" id="7_2x2vu"]
+[ext_resource type="Script" uid="uid://chmlcd10qkrcw" path="res://alert_light.gd" id="8_f8ci1"]
+[ext_resource type="Texture2D" uid="uid://d4cadj33j32mg" path="res://Textures/Light/texture_07.png" id="9_iakae"]
+[ext_resource type="PackedScene" uid="uid://cuaic7ink8ur" path="res://cryopod.tscn" id="10_7mylh"]
+[ext_resource type="PackedScene" uid="uid://bxfo5t0jv7kbc" path="res://player.tscn" id="11_3k4dh"]
+[ext_resource type="PackedScene" uid="uid://c3fcf1tnfgrnn" path="res://barrel.tscn" id="12_idpoe"]
+[ext_resource type="PackedScene" uid="uid://cvs6lcufkyu2e" path="res://box.tscn" id="13_ggudo"]
+[ext_resource type="AudioStream" uid="uid://dfm5ebkdfhbt" path="res://sounds/ElectronicsHum.wav" id="15_545ku"]
+[ext_resource type="Script" uid="uid://i4kdvsen626j" path="res://creeper.gd" id="17_4k5bj"]
+[ext_resource type="PackedScene" uid="uid://q0tq5ve2umor" path="res://models/mob.fbx" id="17_4ou0f"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_4k5bj"]
+vertices = PackedVector3Array(-9, -3.49466, 8.25, -8.5, -3.49466, 8, -8.25, -3.49466, 6.75, -5, -3.49466, -15.75, -43.75, -3.49466, -15.75, -43.75, -3.49466, 9.5, -6.25, -3.49466, 6.25, -6.25, -3.49466, 4.75, -5, -3.49466, 4.25, -9, -3.49466, 9.75, -32, 8.25534, -15.75, -31.75, 8.00534, -15.25, -31.25, 8.25534, -15.5, -3.5, -3.49466, 5, -1, -3.49466, 4.5, -1, -3.49466, 3.5, -4.25, -3.49466, 4.25, 0, -3.49466, 3, 0, -3.49466, -15.75, 1, -3.49466, 3.5, 1.25, -3.49466, 4.5, 4, -3.49466, 5, 7.5, -3.49466, 7.5, 30.5, -3.49466, 13, 30.5, -3.49466, -15.75, 9.25, -3.49466, 10.25, 9.75, -3.49466, 13.25, -7.75, -3.49466, 17.75, -6.5, -3.49466, 19.75, -4, -3.49466, 21.75, -8, -3.49466, 13.75, -0.75, -3.49466, 22.75, 2, -3.49466, 22.5, 5.5, -3.49466, 20.75, 8.25, -3.49466, 12, 6.75, -3.49466, 9, 4.5, -3.49466, 7, 8.5, -3.49466, 15.25, 7.25, -3.49466, 18.75, 1.25, -3.49466, 5.75, -2.25, -3.49466, 6, -5.25, -3.49466, 7.5, -7.75, -3.49466, 10.75, -9.25, -3.49466, 17.75, -43.75, -3.49466, 17.75, 9.75, -3.49466, 15.25, 30.5, -3.49466, 15.5, 9.5, -3.49466, 17.5, 8.25, -3.49466, 20, 5.75, -3.49466, 22.5, 3, -3.49466, 23.75, 0, -3.49466, 62.5, 30.5, -3.49466, 62.5, 0, -3.49466, 24, -8.25, -3.49466, 20, -5.75, -3.49466, 22.5, -3, -3.49466, 23.75, -43.75, -3.49466, 62.5)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 0, 4), PackedInt32Array(4, 0, 5), PackedInt32Array(2, 7, 6), PackedInt32Array(3, 8, 7), PackedInt32Array(3, 7, 2), PackedInt32Array(0, 9, 5), PackedInt32Array(12, 11, 10), PackedInt32Array(14, 13, 15), PackedInt32Array(15, 13, 16), PackedInt32Array(16, 8, 15), PackedInt32Array(15, 8, 17), PackedInt32Array(17, 8, 18), PackedInt32Array(18, 8, 3), PackedInt32Array(20, 19, 21), PackedInt32Array(21, 19, 18), PackedInt32Array(19, 17, 18), PackedInt32Array(21, 18, 22), PackedInt32Array(22, 18, 24), PackedInt32Array(22, 24, 23), PackedInt32Array(23, 26, 25), PackedInt32Array(23, 25, 22), PackedInt32Array(28, 27, 29), PackedInt32Array(29, 27, 30), PackedInt32Array(31, 29, 32), PackedInt32Array(32, 29, 33), PackedInt32Array(35, 34, 36), PackedInt32Array(36, 34, 37), PackedInt32Array(37, 38, 33), PackedInt32Array(40, 39, 41), PackedInt32Array(41, 39, 36), PackedInt32Array(30, 42, 41), PackedInt32Array(37, 33, 36), PackedInt32Array(36, 33, 29), PackedInt32Array(36, 29, 30), PackedInt32Array(36, 30, 41), PackedInt32Array(43, 44, 9), PackedInt32Array(9, 44, 5), PackedInt32Array(26, 23, 45), PackedInt32Array(45, 23, 46), PackedInt32Array(47, 45, 46), PackedInt32Array(48, 47, 46), PackedInt32Array(49, 48, 46), PackedInt32Array(49, 46, 50), PackedInt32Array(50, 46, 52), PackedInt32Array(50, 52, 51), PackedInt32Array(51, 53, 50), PackedInt32Array(44, 43, 54), PackedInt32Array(55, 44, 54), PackedInt32Array(51, 56, 53), PackedInt32Array(56, 51, 55), PackedInt32Array(55, 51, 57), PackedInt32Array(55, 57, 44)]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r8rrl"]
+emission_enabled = true
+emission = Color(0, 0.552941, 0, 1)
+emission_energy_multiplier = 0.21
+backlight_enabled = true
+backlight = Color(1, 0.541241, 0.476759, 1)
+
+[sub_resource type="Animation" id="Animation_4ou0f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.31]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../OmniLight3D_Spire2:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "scale_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_lwvnx"]
+resource_name = "pulse"
+length = 0.7
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.755, 1.31]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../OmniLight3D_Spire2:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.53449),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.755, 1.31]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../OmniLight3D_Spire3:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.53449),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.755, 1.31]
+}
+tracks/3/type = "scale_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 1, 1, 1, 0.7, 1, 0.99, 0.995, 0.99)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4k5bj"]
+_data = {
+&"RESET": SubResource("Animation_4ou0f"),
+&"pulse": SubResource("Animation_lwvnx")
+}
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r8rrl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lwvnx"]
+roughness = 0.34
+emission_enabled = true
+emission = Color(0.8, 0.254902, 0.121569, 1)
+emission_energy_multiplier = 0.03
+backlight_enabled = true
+backlight = Color(0.8, 0.256, 0.12, 1)
+backlight_texture = SubResource("NoiseTexture2D_r8rrl")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lwvnx"]
+noise_type = 2
+frequency = 0.0299
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4ou0f"]
+generate_mipmaps = false
+seamless = true
+noise = SubResource("FastNoiseLite_lwvnx")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_r8rrl"]
+noise_type = 2
+frequency = 0.0199
+fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lwvnx"]
+width = 1000
+height = 1000
+as_normal_map = true
+noise = SubResource("FastNoiseLite_r8rrl")
+
+[sub_resource type="Animation" id="Animation_km5ld"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LightProp/OmniLight3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:animationConstrained")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("NavigationRegion3D/cryopod/cryopod_hinge:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_n6hdu"]
+resource_name = "Tutorial"
+length = 16.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:animationConstrained")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6, 12),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 1, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LightProp/OmniLight3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 12.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("NavigationRegion3D/cryopod/cryopod_hinge:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 14, 15, 16),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, -1.48353, 0), Vector3(0, -3.36325, 0)]
+}
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("NavigationRegion3D/cryopod/cryopod_hisser")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_lwvnx")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_4ou0f")
+}],
+"times": PackedFloat32Array(5.5, 14)
+}
+tracks/3/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i2t4f"]
+_data = {
+&"RESET": SubResource("Animation_km5ld"),
+&"Tutorial": SubResource("Animation_n6hdu")
+}
+
+[sub_resource type="BoxMesh" id="BoxMesh_1ainy"]
+resource_local_to_scene = true
+size = Vector3(20, 10, 0.1)
+
+[sub_resource type="Animation" id="Animation_1ainy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Monitors/Monitor/Tutorial Text/SPIRE/SPIRE1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Monitors/Monitor/Tutorial Text/SPIRE/SPIRE2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Monitors/Monitor/Tutorial Text/SPIRE/SPIRE3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Monitors/Monitor/Tutorial Text/CONTROLS1/MOUSEICON:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Monitors/Monitor/Tutorial Text/CONTROLS1/LOOK:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Monitors/Monitor/Tutorial Text/CONTROLS1/LMB:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Monitors/Monitor/Tutorial Text/CONTROLS1/SHOOT:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Monitors/Monitor/Tutorial Text/CONTROLS2/WASD:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Monitors/Monitor/Tutorial Text/CONTROLS2/MOVE:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Monitors/Monitor/Tutorial Text/CONTROLS2/SHIFT:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Monitors/Monitor/Tutorial Text/CONTROLS2/RUN:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Monitors/Monitor/Tutorial Text/CONTROLS1/RMB:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Monitors/Monitor/Tutorial Text/CONTROLS1/ATTACK2:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Monitors/Monitor/Tutorial Text/CONTROLS2/SPACE:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Monitors/Monitor/Tutorial Text/CONTROLS2/JUMP:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_f2txt"]
+resource_name = "Tutorial"
+length = 12.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Monitors/Monitor/Tutorial Text/SPIRE/SPIRE1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Monitors/Monitor/Tutorial Text/SPIRE/SPIRE2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Monitors/Monitor/Tutorial Text/SPIRE/SPIRE3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Monitors/Monitor/Tutorial Text/CONTROLS1/MOUSEICON:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 5, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Monitors/Monitor/Tutorial Text/CONTROLS1/LOOK:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 5, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Monitors/Monitor/Tutorial Text/CONTROLS1/LMB:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 6, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Monitors/Monitor/Tutorial Text/CONTROLS1/SHOOT:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 6, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Monitors/Monitor/Tutorial Text/CONTROLS1/RMB:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 7, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Monitors/Monitor/Tutorial Text/CONTROLS1/ATTACK2:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 7, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Monitors/Monitor/Tutorial Text/CONTROLS2/WASD:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 9, 12),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Monitors/Monitor/Tutorial Text/CONTROLS2/MOVE:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 9, 12),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Monitors/Monitor/Tutorial Text/CONTROLS2/SHIFT:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 10, 12),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Monitors/Monitor/Tutorial Text/CONTROLS2/RUN:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 10, 12),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Monitors/Monitor/Tutorial Text/CONTROLS2/SPACE:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 11, 12),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Monitors/Monitor/Tutorial Text/CONTROLS2/JUMP:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 11, 12),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n6hdu"]
+_data = {
+&"RESET": SubResource("Animation_1ainy"),
+&"Tutorial": SubResource("Animation_f2txt")
+}
+
+[sub_resource type="BoxMesh" id="BoxMesh_8b0r0"]
+resource_local_to_scene = true
+size = Vector3(10, 5, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aicyk"]
+roughness = 0.35
+emission_enabled = true
+emission = Color(0, 0, 0.317647, 1)
+emission_energy_multiplier = 1.3
+clearcoat_roughness = 0.78
+
+[sub_resource type="Animation" id="Animation_hp87d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TEXT_Monitor_Ruined:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_4k5bj"]
+resource_name = "blink"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TEXT_Monitor_Ruined:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.06667, 2.2, 3.19614, 3.26667, 3.36248, 3.43333, 5.26667, 5.33333, 5.43575, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gxpff"]
+_data = {
+&"RESET": SubResource("Animation_hp87d"),
+&"blink": SubResource("Animation_4k5bj")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1ainy"]
+size = Vector3(10.1158, 5.71527, 0.576263)
+
+[sub_resource type="BoxMesh" id="BoxMesh_km5ld"]
+resource_local_to_scene = true
+size = Vector3(2, 1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_km5ld"]
+albedo_color = Color(0.34902, 0, 0.0666667, 1)
+roughness = 0.35
+emission_enabled = true
+emission = Color(0.32549, 0, 0, 1)
+emission_energy_multiplier = 2.27
+clearcoat_roughness = 0.78
+
+[sub_resource type="BoxMesh" id="BoxMesh_h6smj"]
+resource_local_to_scene = true
+size = Vector3(0.92, 0.52, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i2t4f"]
+resource_local_to_scene = true
+size = Vector3(0.92, 0.52, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lwvnx"]
+resource_local_to_scene = true
+size = Vector3(0.92, 0.52, 0.1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_8b0r0"]
+radius = 0.1
+height = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h6smj"]
+albedo_color = Color(1, 1, 0.203922, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5xgho"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_u52ul"]
+sky_material = SubResource("ProceduralSkyMaterial_5xgho")
+
+[sub_resource type="Environment" id="Environment_vonw3"]
+background_mode = 1
+background_energy_multiplier = 0.0
+sky = SubResource("Sky_u52ul")
+tonemap_mode = 2
+glow_enabled = true
+fog_light_energy = 0.0
+volumetric_fog_density = 0.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lwvnx"]
+radius = 0.398093
+height = 1.89347
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4k5bj"]
+size = Vector3(1.32007, 1.9599, 0.767822)
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_r8rrl")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.74467, 0)
+navigation_mesh = SubResource("NavigationMesh_4k5bj")
+
+[node name="Rooms" type="CSGCombiner3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.74467, 0)
+calculate_tangents = false
+use_collision = true
+metadata/MaterialType = "Wall"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/Rooms"]
+layers = 0
+gi_mode = 0
+calculate_tangents = false
+flip_faces = true
+size = Vector3(1000, 1000, 1000)
+metadata/_edit_lock_ = true
+
+[node name="Room" type="CSGCombiner3D" parent="NavigationRegion3D/Rooms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+layers = 7
+operation = 2
+use_collision = true
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/Rooms/Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.63114, 41.234, 23.3415)
+layers = 5
+cast_shadow = 2
+size = Vector3(75.4237, 88.6681, 79.5497)
+material = ExtResource("4_4k5bj")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="NavigationRegion3D/Rooms/Room"]
+transform = Transform3D(2.12357, 0.220648, 9.64484e-09, 0, -9.33238e-08, 2.135, 0.220648, -2.12357, -9.28241e-08, 0, 86.554, 13.6448)
+layers = 5
+flip_faces = true
+polygon = PackedVector2Array(0.369325, -3.94345, 1.87055, -3.87766, 3.06269, -3.84187, 3.69021, -4.15543, 5.67424, -0.835644, 5.5062, 0.908529, 4.69354, 2.74113, -0.0369952, 5.44785, -3.80551, 2.70621, -3.37394, 1.79922, -5.95223, 0.870021, -3.19599, -4.60766)
+
+[node name="Hole" type="CSGCombiner3D" parent="NavigationRegion3D/Rooms"]
+transform = Transform3D(1, 0, 0, 0, 0.00464255, -0.999989, 0, 0.999989, 0.00464255, -15.2062, 6.40855, 0)
+operation = 2
+use_collision = true
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="NavigationRegion3D/Rooms/Hole"]
+transform = Transform3D(0.869288, 0.00229484, -0.494301, -0.00229484, 0.999997, 0.000606828, 0.494301, 0.000606829, 0.869291, -18.5782, -0.47644, 1.83582)
+polygon = PackedVector2Array(0.197043, 0.424355, 0, 1, 1.41119, 1.54137, 1.40609, -0.163461, 0.536734, 0.185433, 0.627207, -0.307694, 0, 0)
+depth = 5.06
+
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="NavigationRegion3D/Rooms/Hole"]
+transform = Transform3D(0.448362, -0.722485, -0.526296, 0.576569, 0.683691, -0.447363, 0.683037, -0.102866, 0.723104, -18.6359, 3.06748, 2.00764)
+polygon = PackedVector2Array(-0.490859, 0.745786, -0.625803, 2.5931, 1.84529, 1.86415, 1.70973, -0.571798, 1.15417, -0.317064, 0.627207, -0.307694, 0, 0)
+depth = 5.06
+
+[node name="Hole2" type="CSGCombiner3D" parent="NavigationRegion3D/Rooms"]
+transform = Transform3D(1, 0, 0, 0, 0.00464255, -0.999989, 0, 0.999989, 0.00464255, -15.2062, 6.40855, -21.5921)
+use_collision = true
+
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="NavigationRegion3D/Rooms/Hole2"]
+transform = Transform3D(0.601495, -0.681418, 0.416983, 0.786225, 0.597456, -0.157782, -0.141614, 0.422748, 0.895115, -15.4377, 4.43077, -3.00204)
+polygon = PackedVector2Array(-0.490859, 0.745786, -0.625803, 2.5931, 1.84529, 1.86415, 1.70973, -0.571798, 1.15417, -0.317064, 0.627207, -0.307694, 0, 0)
+mode = 1
+spin_degrees = 360.0
+spin_sides = 8
+
+[node name="Door" type="CSGCombiner3D" parent="NavigationRegion3D/Rooms"]
+operation = 2
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/Rooms/Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.097, 0.152507, 0)
+size = Vector3(1, 2.5, 1.8)
+
+[node name="Spire" type="CSGCylinder3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 76.2573, 14.214)
+use_collision = true
+radius = 9.23682
+height = 160.754
+sides = 50
+cone = true
+material = SubResource("StandardMaterial3D_r8rrl")
+
+[node name="AnimationPlayer_Spire" type="AnimationPlayer" parent="NavigationRegion3D/Spire"]
+root_node = NodePath("../Spire_Lights/OmniLight3D_Spire")
+libraries = {
+&"": SubResource("AnimationLibrary_4k5bj")
+}
+autoplay = "pulse"
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D/Spire"]
+operation = 2
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="NavigationRegion3D/Spire/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -75.1343, 0)
+inner_radius = 8.6068
+outer_radius = 11.0119
+sides = 50
+material = SubResource("StandardMaterial3D_lwvnx")
+
+[node name="CSGTorus3D2" type="CSGTorus3D" parent="NavigationRegion3D/Spire/CSGCombiner3D"]
+transform = Transform3D(1.35906, -0.968817, 0, 5.31396, 0.247777, 0, 0, 0, 1, -4.27047, -49.7475, 0)
+inner_radius = 3.61414
+outer_radius = 11.0119
+sides = 50
+material = SubResource("StandardMaterial3D_lwvnx")
+
+[node name="Spire_Lights" type="Node3D" parent="NavigationRegion3D/Spire"]
+
+[node name="OmniLight3D_Spire" type="OmniLight3D" parent="NavigationRegion3D/Spire/Spire_Lights"]
+transform = Transform3D(1, 6.03988e-14, -1.11019e-15, -6.03988e-14, 1, -6.70512e-29, 1.11019e-15, 1.34105e-28, 1, -0.0782161, 3.00295, 0.0852327)
+light_color = Color(0.451105, 1, 0.844716, 1)
+light_energy = 1.31
+light_projector = SubResource("NoiseTexture2D_4ou0f")
+light_size = 0.343
+light_bake_mode = 1
+shadow_enabled = true
+shadow_blur = 3.692
+omni_range = 24.5948
+omni_attenuation = 0.775
+
+[node name="OmniLight3D_Spire2" type="OmniLight3D" parent="NavigationRegion3D/Spire/Spire_Lights"]
+transform = Transform3D(1, 6.03988e-14, -1.11019e-15, -6.03988e-14, 1, -6.70512e-29, 1.11019e-15, 1.34105e-28, 1, -0.0782161, -39.5348, 0.0852327)
+light_color = Color(0.451105, 1, 0.844716, 1)
+light_energy = 0.0
+light_projector = SubResource("NoiseTexture2D_4ou0f")
+light_size = 0.639
+light_negative = true
+light_bake_mode = 1
+shadow_enabled = true
+shadow_blur = 3.692
+omni_range = 24.5948
+omni_attenuation = 0.775
+
+[node name="OmniLight3D_Spire3" type="OmniLight3D" parent="NavigationRegion3D/Spire/Spire_Lights"]
+transform = Transform3D(1, 6.03988e-14, -1.11019e-15, -6.03988e-14, 1, -6.70512e-29, 1.11019e-15, 1.34105e-28, 1, -0.0782161, -49.7767, 0.0852327)
+light_color = Color(0.451105, 1, 0.844716, 1)
+light_energy = 1.0465
+light_projector = SubResource("NoiseTexture2D_4ou0f")
+light_size = 0.639
+light_bake_mode = 1
+shadow_enabled = true
+shadow_blur = 3.692
+omni_range = 24.5948
+omni_attenuation = 0.775
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="NavigationRegion3D/Spire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.20436, 0)
+visible = false
+height = 5.05
+vertices = PackedVector3Array(20.4493, 0, -2.50933, -4.79228, 0, -18.898, -19.4698, 0, 9.37691, 3.00787, 0, 15.8916)
+affect_navigation_mesh = true
+
+[node name="NavigationObstacle3D2" type="NavigationObstacle3D" parent="NavigationRegion3D/Spire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -580.579, 0)
+visible = false
+height = 5.05
+vertices = PackedVector3Array(565.905, 0, -559.503, -555.662, 0, -554.382, -568.466, 0, 592.792, 594.072, 0, 551.821)
+affect_navigation_mesh = true
+
+[node name="cryopod" parent="NavigationRegion3D" instance=ExtResource("10_7mylh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.74467, 4.95242)
+
+[node name="cryopod2" parent="NavigationRegion3D" instance=ExtResource("10_7mylh")]
+transform = Transform3D(0.595965, -0.287182, 0.749901, 0.223965, 0.95625, 0.188216, -0.771145, 0.0557811, 0.634211, -4.31934, -2.82081, 5.99753)
+
+[node name="cryopod3" parent="NavigationRegion3D" instance=ExtResource("10_7mylh")]
+transform = Transform3D(0.587122, 0.0921856, 0.804232, -0.112643, 0.993132, -0.0316036, -0.801622, -0.0720365, 0.593475, -7.46208, -2.83176, 8.73665)
+
+[node name="OmniLight3D" parent="NavigationRegion3D/cryopod3" index="0"]
+visible = false
+
+[node name="cryopod_hinge" parent="NavigationRegion3D/cryopod3" index="2"]
+transform = Transform3D(-0.639755, -0.532023, -0.554675, -0.14954, 0.794061, -0.589155, 0.753891, -0.293969, -0.587563, 0.890532, -0.394175, -0.127553)
+
+[node name="Sky" type="Sprite3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 178.157, 14.9017)
+cast_shadow = 0
+modulate = Color(1, 0.37, 0.37, 1)
+texture = SubResource("NoiseTexture2D_lwvnx")
+script = ExtResource("2_4ou0f")
+
+[node name="Animation_Env" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_i2t4f")
+}
+autoplay = "Tutorial"
+
+[node name="Monitors" type="Node3D" parent="."]
+
+[node name="Monitor" parent="Monitors" instance=ExtResource("5_hp87d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0120127, 4.13763, -16.4069)
+mesh = SubResource("BoxMesh_1ainy")
+skeleton = NodePath("../..")
+
+[node name="Animation_TutorialText" type="AnimationPlayer" parent="Monitors/Monitor"]
+root_node = NodePath("../../..")
+libraries = {
+&"": SubResource("AnimationLibrary_n6hdu")
+}
+autoplay = "Tutorial"
+
+[node name="Tutorial Text" type="Node3D" parent="Monitors/Monitor"]
+
+[node name="SPIRE" type="Node3D" parent="Monitors/Monitor/Tutorial Text"]
+
+[node name="SPIRE1" type="Label3D" parent="Monitors/Monitor/Tutorial Text/SPIRE"]
+transform = Transform3D(1, 0, 0, 0, 1.7, 0, 0, 0, 1, 0, 3, 0.06)
+visible = false
+text = "DEFEND THE SPIRE"
+font = ExtResource("6_gxpff")
+font_size = 345
+outline_size = 0
+
+[node name="SPIRE2" type="Label3D" parent="Monitors/Monitor/Tutorial Text/SPIRE"]
+transform = Transform3D(1, 0, 0, 0, 1.7, 0, 0, 0, 1, 0, 0, 0.06)
+visible = false
+text = "DEFEND THE SPIRE"
+font = ExtResource("6_gxpff")
+font_size = 345
+outline_size = 0
+
+[node name="SPIRE3" type="Label3D" parent="Monitors/Monitor/Tutorial Text/SPIRE"]
+transform = Transform3D(1, 0, 0, 0, 1.7, 0, 0, 0, 1, 0, -3, 0.06)
+visible = false
+text = "DEFEND THE SPIRE"
+font = ExtResource("6_gxpff")
+font_size = 345
+outline_size = 0
+
+[node name="CONTROLS1" type="Node3D" parent="Monitors/Monitor/Tutorial Text"]
+
+[node name="MOUSEICON" type="Label3D" parent="Monitors/Monitor/Tutorial Text/CONTROLS1"]
+transform = Transform3D(1, 0, 0, 0, 1.7, 0, 0, 0, 1, -7, 3, 0.06)
+visible = false
+text = "MOUSE"
+font = ExtResource("6_gxpff")
+font_size = 275
+outline_size = 0
+horizontal_alignment = 0
+line_spacing = -50.0
+
+[node name="LOOK" type="Label3D" parent="Monitors/Monitor/Tutorial Text/CONTROLS1"]
+transform = Transform3D(1, 0, 0, 0, 1.7, 0, 0, 0, 1, 0, 3, 0.06)
+visible = false
+text = "⇒  LOOK "
+font = ExtResource("6_gxpff")
+font_size = 275
+outline_size = 0
+horizontal_alignment = 0
+
+[node name="LMB" type="Label3D" parent="Monitors/Monitor/Tutorial Text/CONTROLS1"]
+transform = Transform3D(1, 0, 0, 0, 1.7, 0, 0, 0, 1, -7, 0, 0.06)
+visible = false
+text = "LMB"
+font = ExtResource("6_gxpff")
+font_size = 275
+outline_size = 0
+horizontal_alignment = 0
+
+[node name="SHOOT" type="Label3D" parent="Monitors/Monitor/Tutorial Text/CONTROLS1"]
+transform = Transform3D(1, 0, 0, 0, 1.7, 0, 0, 0, 1, 0, 0, 0.06)
+visible = false
+text = "⇒  ATTACK"
+font = ExtResource("6_gxpff")
+font_size = 275
+outline_size = 0
+horizontal_alignment = 0
+
+[node name="RMB" type="Label3D" parent="Monitors/Monitor/Tutorial Text/CONTROLS1"]
+transform = Transform3D(1, 0, 0, 0, 1.7, 0, 0, 0, 1, -7, -3, 0.06)
+visible = false
+text = "RMB"
+font = ExtResource("6_gxpff")
+font_size = 275
+outline_size = 0
+horizontal_alignment = 0
+
+[node name="ATTACK2" type="Label3D" parent="Monitors/Monitor/Tutorial Text/CONTROLS1"]
+transform = Transform3D(1, 0, 0, 0, 1.7, 0, 0, 0, 1, 0, -3, 0.06)
+visible = false
+text = "⇒  ATTACK"
+font = ExtResource("6_gxpff")
+font_size = 275
+outline_size = 0
+horizontal_alignment = 0
+
+[node name="CONTROLS2" type="Node3D" parent="Monitors/Monitor/Tutorial Text"]
+
+[node name="WASD" type="Label3D" parent="Monitors/Monitor/Tutorial Text/CONTROLS2"]
+transform = Transform3D(1, 0, 0, 0, 1.7, 0, 0, 0, 1, -7, 3, 0.06)
+visible = false
+text = "W A S D 
+"
+font = ExtResource("6_gxpff")
+font_size = 275
+outline_size = 0
+horizontal_alignment = 0
+line_spacing = -50.0
+
+[node name="MOVE" type="Label3D" parent="Monitors/Monitor/Tutorial Text/CONTROLS2"]
+transform = Transform3D(1, 0, 0, 0, 1.7, 0, 0, 0, 1, 0, 3, 0.06)
+visible = false
+text = "⇒  MOVE"
+font = ExtResource("6_gxpff")
+font_size = 275
+outline_size = 0
+horizontal_alignment = 0
+
+[node name="SHIFT" type="Label3D" parent="Monitors/Monitor/Tutorial Text/CONTROLS2"]
+transform = Transform3D(1, 0, 0, 0, 1.7, 0, 0, 0, 1, -7, 0, 0.06)
+visible = false
+text = "SHIFT"
+font = ExtResource("6_gxpff")
+font_size = 275
+outline_size = 0
+horizontal_alignment = 0
+
+[node name="RUN" type="Label3D" parent="Monitors/Monitor/Tutorial Text/CONTROLS2"]
+transform = Transform3D(1, 0, 0, 0, 1.7, 0, 0, 0, 1, 0, 0, 0.06)
+visible = false
+text = "⇒  RUN"
+font = ExtResource("6_gxpff")
+font_size = 275
+outline_size = 0
+horizontal_alignment = 0
+
+[node name="SPACE" type="Label3D" parent="Monitors/Monitor/Tutorial Text/CONTROLS2"]
+transform = Transform3D(1, 0, 0, 0, 1.7, 0, 0, 0, 1, -7, -3, 0.06)
+visible = false
+text = "SPACE"
+font = ExtResource("6_gxpff")
+font_size = 275
+outline_size = 0
+horizontal_alignment = 0
+
+[node name="JUMP" type="Label3D" parent="Monitors/Monitor/Tutorial Text/CONTROLS2"]
+transform = Transform3D(1, 0, 0, 0, 1.7, 0, 0, 0, 1, 0, -3, 0.06)
+visible = false
+text = "⇒  JUMP"
+font = ExtResource("6_gxpff")
+font_size = 275
+outline_size = 0
+horizontal_alignment = 0
+
+[node name="Monitor_Ruined" parent="Monitors" instance=ExtResource("5_hp87d")]
+transform = Transform3D(0.995958, -0.00152361, -0.0898027, -0.0200116, 0.970958, -0.238413, 0.0875579, 0.239246, 0.967003, -35.5462, 6.79039, -15.468)
+mesh = SubResource("BoxMesh_8b0r0")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_aicyk")
+
+[node name="AnimationPlayer_Monitor_Ruined" type="AnimationPlayer" parent="Monitors/Monitor_Ruined"]
+libraries = {
+&"": SubResource("AnimationLibrary_gxpff")
+}
+autoplay = "blink"
+
+[node name="TEXT_Monitor_Ruined" type="Node3D" parent="Monitors/Monitor_Ruined"]
+transform = Transform3D(1, 0, -7.45058e-09, -1.86265e-09, 1, 0, -1.49012e-08, -1.49012e-08, 1, 0, 0, 0)
+
+[node name="SPIRE1" type="Label3D" parent="Monitors/Monitor_Ruined/TEXT_Monitor_Ruined"]
+transform = Transform3D(1, 0, 0, 0, 1.7, 0, 0, 0, 1, 0, 1.5, 0.06)
+modulate = Color(0.541176, 0.541176, 0.776471, 0.65098)
+text = "DEFEND THE SPIRE"
+font = ExtResource("6_gxpff")
+font_size = 170
+outline_size = 0
+
+[node name="SPIRE2" type="Label3D" parent="Monitors/Monitor_Ruined/TEXT_Monitor_Ruined"]
+transform = Transform3D(1, 0, 0, 0, 1.7, 0, 0, 0, 1, 0, 0, 0.06)
+modulate = Color(0.541176, 0.541176, 0.776471, 0.65098)
+text = "DEFEND THE SPIRE"
+font = ExtResource("6_gxpff")
+font_size = 170
+outline_size = 0
+
+[node name="SPIRE3" type="Label3D" parent="Monitors/Monitor_Ruined/TEXT_Monitor_Ruined"]
+transform = Transform3D(1, 0, 0, 0, 1.7, 0, 0, 0, 1, 0, -1.5, 0.06)
+modulate = Color(0.541176, 0.541176, 0.776471, 0.65098)
+text = "DEFEND THE SPIRE"
+font = ExtResource("6_gxpff")
+font_size = 170
+outline_size = 0
+
+[node name="RigidBody3D" type="StaticBody3D" parent="Monitors/Monitor_Ruined"]
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Monitors/Monitor_Ruined/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00901792, -0.0579529, -0.211868)
+shape = SubResource("BoxShape3D_1ainy")
+
+[node name="Monitor2" parent="Monitors" instance=ExtResource("5_hp87d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.8742, 10.8649, -16.4184)
+mesh = SubResource("BoxMesh_km5ld")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_km5ld")
+
+[node name="Label3D_Countdown" type="Label3D" parent="Monitors/Monitor2" node_paths=PackedStringArray("targetAnimation")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00575, 0, 0.06)
+modulate = Color(1, 0, 0, 1)
+text = "99.88"
+font = ExtResource("6_gxpff")
+font_size = 110
+outline_size = 0
+horizontal_alignment = 0
+script = ExtResource("7_2x2vu")
+targetAnimation = NodePath("../../../Animation_Env")
+
+[node name="Monitor5" parent="Monitors" instance=ExtResource("5_hp87d")]
+transform = Transform3D(-0.00930241, 0, 0.999957, 0, 1, 0, -0.999957, 0, -0.00930241, -28.3238, 3.48681, -0.0913093)
+mesh = SubResource("BoxMesh_h6smj")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_km5ld")
+
+[node name="Monitor3" parent="Monitors" instance=ExtResource("5_hp87d")]
+transform = Transform3D(-0.939271, 0.341806, 0.0306481, 0.329534, 0.923256, -0.1975, -0.0958029, -0.175407, -0.979824, -3.33482, -0.670508, 5.37051)
+mesh = SubResource("BoxMesh_i2t4f")
+skeleton = NodePath("../..")
+
+[node name="Monitor6" parent="Monitors" instance=ExtResource("5_hp87d")]
+transform = Transform3D(-0.662404, 0.694572, -0.280696, 0.0465341, 0.412114, 0.909944, 0.7477, 0.589688, -0.305306, -7.28001, -0.890185, 7.64884)
+mesh = SubResource("BoxMesh_lwvnx")
+skeleton = NodePath("../..")
+
+[node name="LightProp" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 0.99972, -4.36991e-08, -0.0236819, 0.0236819, -1.03517e-09, 0.99972, -23.0868, 17.7494, 0.188751)
+cast_shadow = 0
+mesh = SubResource("CapsuleMesh_8b0r0")
+surface_material_override/0 = SubResource("StandardMaterial3D_h6smj")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="LightProp"]
+transform = Transform3D(-4.37114e-08, 0.999719, 0.0236819, -1, -4.36992e-08, -1.03517e-09, 5.76168e-17, -0.0236819, 0.999719, -0.457939, -9.31713, 0.103494)
+light_color = Color(1, 0.87451, 0.52549, 1)
+shadow_enabled = true
+shadow_blur = 3.692
+omni_range = 60.469
+
+[node name="Alert_Light" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2714, 4.90964, 0.281372)
+script = ExtResource("8_f8ci1")
+rotation_period = 1.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Alert_Light"]
+transform = Transform3D(0.974601, 0, 0.223948, 0, 1, 0, -0.223948, 0, 0.974601, 0.3, -0.444, 0)
+light_color = Color(0.815686, 0.266667, 0, 1)
+light_energy = 0.2
+light_projector = ExtResource("9_iakae")
+shadow_enabled = true
+shadow_blur = 3.692
+omni_range = 12.3403
+omni_attenuation = 0.411
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(0.851663, -0.0101069, 0.523992, -0.52409, -0.016424, 0.851505, -4.27385e-10, -0.999814, -0.0192846, -30.8965, 8.23849, -0.106658)
+visible = false
+light_color = Color(0.448942, 0.390777, 0.92672, 1)
+light_volumetric_fog_energy = 1.941
+spot_range = 20.946
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(0.624428, 0.695385, 0.355709, -0.645668, 0.203264, 0.736068, 0.439548, -0.689292, 0.575912, -31.7647, 7.14419, 6.37231)
+visible = false
+light_color = Color(0.448942, 0.390777, 0.92672, 1)
+light_volumetric_fog_energy = 1.941
+spot_range = 20.946
+
+[node name="OmniLight3D_debug" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.186646, 19.4829, 0.281372)
+visible = false
+light_color = Color(1, 0.87451, 0.52549, 1)
+light_energy = 0.51
+shadow_enabled = true
+shadow_blur = 3.692
+omni_range = 157.999
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vonw3")
+
+[node name="Player" parent="." instance=ExtResource("11_3k4dh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.107549, 4.21107)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.738173, 0.308814, -0.599779, 0, 0.889073, 0.457765, 0.674612, -0.33791, 0.65629, -3.14885, 3.29521, 3.4484)
+
+[node name="AudioStreamPlayerAmbience" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14.001)
+stream = ExtResource("15_545ku")
+volume_db = -10.141
+autoplay = true
+
+[node name="Props" type="Node3D" parent="."]
+
+[node name="Barrel" parent="Props" instance=ExtResource("12_idpoe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.57047, 0.81216, 1.99517)
+
+[node name="Barrel2" parent="Props" instance=ExtResource("12_idpoe")]
+transform = Transform3D(0.0992503, 0, -0.995063, 0, 1, 0, 0.995063, 0, 0.0992503, -15.5936, -0.668508, 9.04024)
+
+[node name="Barrel3" parent="Props" instance=ExtResource("12_idpoe")]
+transform = Transform3D(0.0992503, 0, -0.995063, 0, 1, 0, 0.995063, 0, 0.0992503, -14.8511, -0.668508, 8.96618)
+
+[node name="Barrel6" parent="Props" instance=ExtResource("12_idpoe")]
+transform = Transform3D(0.0992503, 0, -0.995063, 0, 1, 0, 0.995063, 0, 0.0992503, -13.0293, -0.668508, 8.78447)
+
+[node name="Barrel7" parent="Props" instance=ExtResource("12_idpoe")]
+transform = Transform3D(0.0992503, 0, -0.995063, 0, 1, 0, 0.995063, 0, 0.0992503, -14.8064, 0.276054, 8.96172)
+
+[node name="Barrel8" parent="Props" instance=ExtResource("12_idpoe")]
+transform = Transform3D(0.0992503, 0, -0.995063, 0, 1, 0, 0.995063, 0, 0.0992503, -15.3921, 0.276054, 9.02015)
+
+[node name="Barrel4" parent="Props" instance=ExtResource("12_idpoe")]
+transform = Transform3D(0.0992503, 0.507096, -0.856156, -4.15262e-08, 0.860404, 0.509612, 0.995062, -0.0505791, 0.0853953, -14.1363, -0.668508, 8.89489)
+
+[node name="Barrel5" parent="Props" instance=ExtResource("12_idpoe")]
+transform = Transform3D(0.00505251, 0.0189238, -0.999808, 0.998703, 0.0505514, 0.00600373, 0.0506554, -0.998543, -0.018644, -13.6124, -0.810424, 8.84263)
+
+[node name="Box" parent="Props" instance=ExtResource("13_ggudo")]
+transform = Transform3D(0.999999, 0, 0.0010821, 0, 1, 0, -0.0010821, 0, 0.999999, -3.74982, 0.192445, 3.02438)
+
+[node name="Mobs" type="Node3D" parent="."]
+
+[node name="Creeper" type="CharacterBody3D" parent="Mobs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.1662, 0.116817, 0)
+script = ExtResource("17_4k5bj")
+metadata/MaterialType = "Flesh"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mobs/Creeper"]
+transform = Transform3D(1, 0, 0, 0, 0.0362774, 0.999342, 0, -0.999342, 0.0362774, 0, 0.26177, 0.0540718)
+shape = SubResource("CapsuleShape3D_lwvnx")
+
+[node name="Hitbox" type="Area3D" parent="Mobs/Creeper"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mobs/Creeper/Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 0.0362774, 0.999342, 0, -0.999342, 0.0362774, 0.0316162, 0.22194, 0.151904)
+shape = SubResource("BoxShape3D_4k5bj")
+
+[node name="Model" parent="Mobs/Creeper" instance=ExtResource("17_4ou0f")]
+transform = Transform3D(0.64, 0, 0, 0, 0.64, 0, 0, 0, 0.64, 0, 0, 0)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Mobs/Creeper"]
+
+[editable path="NavigationRegion3D/cryopod3"]

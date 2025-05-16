@@ -64,6 +64,8 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("player_throw"):
 		print("Throw")
 
+	
+	velocity = velocity.limit_length(10)
 	move_and_slide()
 
 func kick():
@@ -103,13 +105,15 @@ func playMeleeSound(meta):
 	if(meta == "Punch"):
 		$AudioStreamPlayer3D_Punch.play()
 	if(meta == "Kick"):
-		$AudioStreamPlayer3D_Punch.play()
+		$AudioStreamPlayer3D_Kick.play()
 	if(meta == "Metal"):
 		$AudioStreamPlayer3D_HitMetal.play()
 	if(meta == "MetalLight"):
 		$AudioStreamPlayer3D_HitMetalLight.play()
 	if(meta == "Wall"):
 		$AudioStreamPlayer3D_HitWall.play()
+	if(meta == "Flesh"):
+		$AudioStreamPlayer3D_HitFlesh.play()
 	
 func _unhandled_input(event)-> void:
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
