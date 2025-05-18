@@ -4,7 +4,7 @@
 // Incrementing CACHE_VERSION will kick off the install event and force
 // previously cached resources to be updated from the network.
 /** @type {string} */
-const CACHE_VERSION = '1747568946|216617133';
+const CACHE_VERSION = '1747569093|363629506';
 /** @type {string} */
 const CACHE_PREFIX = 'FriendFragger-sw-cache-';
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
