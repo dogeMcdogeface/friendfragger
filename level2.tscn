@@ -1217,7 +1217,7 @@ texture_albedo = SubResource("GradientTexture2D_ggudo")
 emission_energy = 0.24
 
 [node name="Monitor2" parent="Monitors" instance=ExtResource("5_hp87d")]
-transform = Transform3D(1.27, 0, 0, 0, 1.27, 0, 0, 0, 1.27, -9.16797, 11.2525, -16.4184)
+transform = Transform3D(1.27, 0, 0, 0, 1.27, 0, 0, 0, 1.27, -11.3203, 12.4382, -16.4184)
 mesh = SubResource("BoxMesh_km5ld")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_km5ld")

@@ -80,7 +80,7 @@ func _physics_process(delta: float) -> void:
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
-		print(collider)
+		#print(collider)
 
 		if collider is RigidBody3D:
 			collider.apply_central_impulse(-collision.get_normal() * mass / 20)
