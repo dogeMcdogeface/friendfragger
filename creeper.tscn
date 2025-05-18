@@ -1,9 +1,12 @@
-[gd_scene load_steps=24 format=4 uid="uid://cfbbqaoc5g7co"]
+[gd_scene load_steps=29 format=4 uid="uid://cfbbqaoc5g7co"]
 
 [ext_resource type="Script" uid="uid://i4kdvsen626j" path="res://creeper.gd" id="1_pco42"]
 [ext_resource type="AudioStream" uid="uid://wodvx23x7oew" path="res://sounds/CombatKnifeHitFlesh.wav" id="2_2gmcm"]
+[ext_resource type="Texture2D" uid="uid://dgwikcelleych" path="res://melty_texture.tres" id="2_a4faw"]
 [ext_resource type="AudioStream" uid="uid://dqe1nkt0j03vy" path="res://sounds/CrowbarHitFlesh.wav" id="3_ywdye"]
 [ext_resource type="AudioStream" uid="uid://ce4rv0npbn4hk" path="res://sounds/punch/MaleCough.wav" id="4_a4faw"]
+[ext_resource type="AudioStream" uid="uid://cpfno1nbepgmx" path="res://sounds/WaterStep1.wav" id="5_ywdye"]
+[ext_resource type="AudioStream" uid="uid://cv4vuwhirr8ty" path="res://sounds/WaterStep2.wav" id="6_a4faw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lwvnx"]
 radius = 0.398093
@@ -53,6 +56,10 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_b3vwo")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_shbt6"]
+albedo_color = Color(1, 0.368627, 0.368627, 1)
+albedo_texture = ExtResource("2_a4faw")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_osh60"]
 _surfaces = [{
@@ -164,9 +171,9 @@ shadow_mesh = SubResource("ArrayMesh_vboew")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4k5bj"]
 resource_local_to_scene = true
-albedo_color = Color(1, 0, 0, 1)
+albedo_color = Color(0.631773, 0.525755, 0.12229, 1)
 emission_enabled = true
-emission = Color(1, 0, 0, 1)
+emission = Color(0.674219, 0.504019, 0.109962, 1)
 emission_energy_multiplier = 10.8
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y1g8i"]
@@ -228,6 +235,11 @@ random_volume_offset_db = 1.97
 streams_count = 1
 stream_0/stream = ExtResource("4_a4faw")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_shbt6"]
+streams_count = 2
+stream_0/stream = ExtResource("5_ywdye")
+stream_1/stream = ExtResource("6_a4faw")
+
 [node name="Creeper" type="CharacterBody3D"]
 collision_layer = 3
 collision_mask = 3
@@ -235,8 +247,8 @@ axis_lock_angular_x = true
 axis_lock_angular_z = true
 platform_on_leave = 2
 script = ExtResource("1_pco42")
-dead = true
 mass = 20.0
+rotation_speed = 1.0
 metadata/MaterialType = "Flesh"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -254,7 +266,7 @@ transform = Transform3D(0.64, 0, 0, 0, 0.64, 0, 0, 0, 0.64, 0, 0, 0)
 transform = Transform3D(1.78814e-05, 100, 1.50996e-05, 100, -1.19209e-05, -2.84217e-12, 0, 1.50996e-05, -100, 0.0111553, 0.179434, -0.0207509)
 mesh = SubResource("ArrayMesh_8yltk")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_sv8de")
+surface_material_override/0 = SubResource("StandardMaterial3D_shbt6")
 
 [node name="Cylinder" type="MeshInstance3D" parent="Model"]
 transform = Transform3D(0, 90.6308, 42.2618, 100, 0, -4.47035e-06, -4.47035e-06, 42.2618, -90.6308, -0.154118, 0.179434, 0.0433045)
@@ -303,7 +315,14 @@ max_polyphony = 10
 [node name="AudioStreamPlayer3D_death" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0585306, 0.543046, -0.662001)
 stream = SubResource("AudioStreamRandomizer_iakae")
-pitch_scale = 1.65
+pitch_scale = 0.7
+
+[node name="AudioStreamPlayer3D_walk" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0585306, 0.543046, -0.662001)
+stream = SubResource("AudioStreamRandomizer_shbt6")
+volume_db = -40.0
+unit_size = 10.7
+pitch_scale = 0.49
 
 [node name="Timer_Remove" type="Timer" parent="."]
 wait_time = 2.0

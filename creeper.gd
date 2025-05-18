@@ -41,6 +41,8 @@ func selectNewNavTarget():
 	
 
 func _physics_process(delta: float) -> void:
+	
+	
 	if absorber:
 		var d = (absorber.get_absorb_position() - global_position)
 		if d.length() < 1:remove()
@@ -70,6 +72,9 @@ func _physics_process(delta: float) -> void:
 
 
 		if is_on_floor():
+			if !$AudioStreamPlayer3D_walk.playing: 
+				$AudioStreamPlayer3D_walk.play()
+			
 			# Smoothly rotate this object toward Gizmo's Y-rotation
 			var current_yaw = global_rotation.y
 			var target_yaw = $Gizmo.global_rotation.y

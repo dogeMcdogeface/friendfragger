@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://c4q2qgfk681lg"]
+[gd_scene load_steps=72 format=3 uid="uid://c4q2qgfk681lg"]
 
 [ext_resource type="Script" uid="uid://b83x6x6j0y7y4" path="res://level.gd" id="1_r8rrl"]
 [ext_resource type="Script" uid="uid://dnol41i407hx7" path="res://rooms.gd" id="2_3k4dh"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://drjqypwlc5v5a" path="res://auto_label_3d.tscn" id="18_idpoe"]
 [ext_resource type="PackedScene" uid="uid://cfbbqaoc5g7co" path="res://creeper.tscn" id="22_f8ci1"]
 [ext_resource type="Script" uid="uid://c4rho2sbn1sxn" path="res://enemy_spawner.gd" id="23_iakae"]
+[ext_resource type="AudioStream" uid="uid://draiwktd2jqwx" path="res://sounds/omega-flowey-alarm.mp3" id="27_ggudo"]
 
 [sub_resource type="Animation" id="Animation_km5ld"]
 length = 0.001
@@ -158,6 +159,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer3D_syren:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_iakae"]
 resource_name = "spawner loop"
@@ -184,6 +197,18 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 30),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer3D_syren:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 27),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -876,6 +901,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 76.2573, 14.214)
 
 [node name="cryopod" parent="NavigationRegion3D" instance=ExtResource("10_7mylh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.78409, 4.95242)
+heal_enabled = true
 
 [node name="Area3D_Heal" type="Area3D" parent="NavigationRegion3D/cryopod"]
 linear_damp = 2.465
@@ -1328,6 +1354,19 @@ shadow_enabled = true
 shadow_blur = 3.692
 omni_range = 60.469
 
+[node name="LightProp2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 0.99972, -4.36991e-08, -0.0236819, 0.0236819, -1.03517e-09, 0.99972, -2.77987, 32.5434, 42.9278)
+cast_shadow = 0
+mesh = SubResource("CapsuleMesh_8b0r0")
+surface_material_override/0 = SubResource("StandardMaterial3D_h6smj")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="LightProp2"]
+transform = Transform3D(-4.37114e-08, 0.999719, 0.0236819, -1, -4.36992e-08, -1.03517e-09, 5.76168e-17, -0.0236819, 0.999719, -0.457939, -9.31713, 0.103494)
+light_color = Color(1, 0.87451, 0.52549, 1)
+shadow_enabled = true
+shadow_blur = 3.692
+omni_range = 60.469
+
 [node name="Alert_Light" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.7465, 4.90964, 0.281372)
 script = ExtResource("8_f8ci1")
@@ -1434,5 +1473,13 @@ spawnTime = 5.0
 [node name="MeshInstance3D" type="MeshInstance3D" parent="EnemySpawner2"]
 visible = false
 mesh = SubResource("CylinderMesh_7mylh")
+
+[node name="AudioStreamPlayer3D_syren" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50658, 1.95461)
+stream = ExtResource("27_ggudo")
+volume_db = 16.901
+max_db = 6.0
+pitch_scale = 0.89
+panning_strength = 3.0
 
 [editable path="NavigationRegion3D/cryopod3"]

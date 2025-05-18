@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 
-@export var health_max = 50
+@export var health_max = 100
 @onready var health = health_max
 
 @export var mass = 80.0
@@ -86,6 +86,10 @@ func _physics_process(delta: float) -> void:
 			collider.apply_central_impulse(-collision.get_normal() * mass / 20)
 		elif collider.has_method("getPushed"):
 			collider.getPushed(-collision.get_normal() * mass / 20, collision.get_position() )
+		
+		if collider.has_method("heal") and health < health_max:
+			heal( collider.heal(), delta)
+
 func kick():
 	$AnimationKick.play("kick")
 	var closeObjects = $Kick.get_overlapping_bodies()
@@ -148,4 +152,9 @@ func _unhandled_input(event)-> void:
 
 func get_label_property(prop:String):
 	if (prop == "Health"):
-		return "(♥) %s" % health
+		return "(♥) %02d" % health
+
+
+func heal(amt, delta):
+	health += amt * delta
+	health = clamp(health, 0, health_max)

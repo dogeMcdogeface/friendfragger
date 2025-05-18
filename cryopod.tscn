@@ -1,12 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://cuaic7ink8ur"]
+[gd_scene load_steps=8 format=3 uid="uid://cuaic7ink8ur"]
 
 [ext_resource type="Material" uid="uid://c2umykt11onnc" path="res://glass.tres" id="1_nnqey"]
 [ext_resource type="AudioStream" uid="uid://cs51mgrbxh2yu" path="res://sounds/CrowbarHitHard.wav" id="2_nnqey"]
 [ext_resource type="AudioStream" uid="uid://ryiyjjvuq3bl" path="res://sounds/MetalHit1.wav" id="3_3eobh"]
+[ext_resource type="AudioStream" uid="uid://brkrertui7dfh" path="res://sounds/punch/AugDefenseOn.wav" id="4_3eobh"]
 
 [sub_resource type="GDScript" id="GDScript_pqw5m"]
 script/source = "extends Node3D
 
+@export var heal_enabled = false
+@export var heal_per_second = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,6 +23,13 @@ func _process(delta: float) -> void:
 
 func attacked(type: String, impulse: Vector3, damage: float):
 	$AudioStreamPlayer3D_hit.play()
+
+func heal():
+	if !heal_enabled: return 0
+	
+	if !$AudioStreamPlayer3D_heal.playing: 
+		$AudioStreamPlayer3D_heal.play()
+	return heal_per_second
 "
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pqw5m"]
@@ -148,3 +158,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.402479, -0.117698)
 [node name="AudioStreamPlayer3D_hit" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0585306, 0.543046, -0.662001)
 stream = SubResource("AudioStreamRandomizer_5aiv6")
+
+[node name="AudioStreamPlayer3D_heal" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0585306, 0.543046, -0.662001)
+stream = ExtResource("4_3eobh")
