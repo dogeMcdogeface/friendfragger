@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bxfo5t0jv7kbc"]
+[gd_scene load_steps=32 format=3 uid="uid://bxfo5t0jv7kbc"]
 
 [ext_resource type="Script" uid="uid://bhilr0ju5o28p" path="res://player.gd" id="1_4flbx"]
 [ext_resource type="ArrayMesh" uid="uid://0yip68oghp7j" path="res://models/Ranger/player_mesh.tres" id="2_onrkg"]
@@ -7,6 +7,9 @@
 [ext_resource type="AudioStream" uid="uid://nkiq0tla23nm" path="res://sounds/punch/swing-004.ogg" id="5_pylmc"]
 [ext_resource type="AudioStream" uid="uid://djx3goljjst37" path="res://sounds/punch/hit-001.ogg" id="7_pbfsw"]
 [ext_resource type="AudioStream" uid="uid://b5i6hhq7aome3" path="res://sounds/punch/hit-004.ogg" id="8_5tmop"]
+[ext_resource type="AudioStream" uid="uid://bw7lxx4ua78os" path="res://sounds/male/MaleEyePain.wav" id="8_nvl01"]
+[ext_resource type="AudioStream" uid="uid://b38iyem83k6fr" path="res://sounds/male/MalePainLarge.wav" id="9_ivps1"]
+[ext_resource type="AudioStream" uid="uid://bthli6k03lsie" path="res://sounds/male/MalePainMedium.wav" id="10_urp6f"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_0b4ue"]
 radius = 0.1
@@ -490,6 +493,33 @@ _data = {
 &"kick": SubResource("Animation_sweqy")
 }
 
+[sub_resource type="Animation" id="Animation_nvl01"]
+length = 0.001
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/CameraGizmo")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array()
+
+[sub_resource type="Animation" id="Animation_n7ghd"]
+resource_name = "shake"
+length = 0.4
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/CameraGizmo")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.0666667, 1, 0, 0.083, 0, 0.997, 0.4, 1, 0, 0, 0, 1)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ivps1"]
+_data = {
+&"RESET": SubResource("Animation_nvl01"),
+&"shake": SubResource("Animation_n7ghd")
+}
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_u52ul"]
 radius = 0.3
 height = 1.8
@@ -588,6 +618,12 @@ streams_count = 2
 stream_0/stream = ExtResource("7_pbfsw")
 stream_1/stream = ExtResource("8_5tmop")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_606se"]
+streams_count = 3
+stream_0/stream = ExtResource("8_nvl01")
+stream_1/stream = ExtResource("9_ivps1")
+stream_2/stream = ExtResource("10_urp6f")
+
 [node name="Player" type="CharacterBody3D"]
 platform_on_leave = 2
 script = ExtResource("1_4flbx")
@@ -630,11 +666,6 @@ mesh = SubResource("SphereMesh_0b4ue")
 surface_material_override/0 = SubResource("StandardMaterial3D_n6hdu")
 metadata/_edit_lock_ = true
 
-[node name="Camera3D" type="Camera3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.227156)
-cull_mask = 1048573
-current = true
-
 [node name="Punch" type="Area3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.226, 0, 0)
 collision_layer = 3
@@ -652,6 +683,13 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Head/Punch"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.102904, 0, -0.46356)
 shape = SubResource("BoxShape3D_onrkg")
+
+[node name="CameraGizmo" type="Node3D" parent="Head"]
+
+[node name="Camera3D" type="Camera3D" parent="Head/CameraGizmo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.227156)
+cull_mask = 1048573
+current = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 visible = false
@@ -681,6 +719,11 @@ libraries = {
 [node name="AnimationKick" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_2hs0m")
+}
+
+[node name="AnimationShake" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ivps1")
 }
 
 [node name="Skin" type="Node3D" parent="."]
@@ -908,3 +951,8 @@ stream = SubResource("AudioStreamRandomizer_7ahtn")
 [node name="AudioStreamPlayer3D_Kick" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0585306, 0.543046, -0.662001)
 stream = SubResource("AudioStreamRandomizer_7lmhl")
+
+[node name="AudioStreamPlayer3D_Hurt" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0585306, 0.543046, -0.662001)
+stream = SubResource("AudioStreamRandomizer_606se")
+volume_db = -0.76

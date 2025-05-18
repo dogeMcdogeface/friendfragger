@@ -158,3 +158,13 @@ func get_label_property(prop:String):
 func heal(amt, delta):
 	health += amt * delta
 	health = clamp(health, 0, health_max)
+
+func get_hurt(damage):
+	print("Got hurt ",damage)
+	health -= damage
+	health = clamp(health, 0, health_max)
+	if !$AudioStreamPlayer3D_Hurt.playing: 
+		$AudioStreamPlayer3D_Hurt.play()
+	if ! $AnimationShake.is_playing():
+		print("playing")
+		$AnimationShake.play("shake")

@@ -4,6 +4,9 @@ extends CharacterBody3D
 @export var dead = false 
 var absorber = null
 
+@export var damage: float = 10  # 
+
+
 @export var speed = 5.0
 
 @export var mass: float = 5.0  # 
@@ -151,3 +154,12 @@ func remove():
 	print("clearing")
 	Globals.mob_count -= 1
 	queue_free()
+
+
+func _on_hurt_box_body_entered(body: Node3D) -> void:
+	print(body)
+
+	if body.has_method("get_hurt"):
+		body.get_hurt(damage)
+		print(body)
+	pass # Replace with function body.

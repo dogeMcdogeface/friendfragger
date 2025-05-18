@@ -1,12 +1,15 @@
-[gd_scene load_steps=29 format=4 uid="uid://cfbbqaoc5g7co"]
+[gd_scene load_steps=30 format=4 uid="uid://cfbbqaoc5g7co"]
 
 [ext_resource type="Script" uid="uid://i4kdvsen626j" path="res://creeper.gd" id="1_pco42"]
 [ext_resource type="AudioStream" uid="uid://wodvx23x7oew" path="res://sounds/CombatKnifeHitFlesh.wav" id="2_2gmcm"]
 [ext_resource type="Texture2D" uid="uid://dgwikcelleych" path="res://melty_texture.tres" id="2_a4faw"]
 [ext_resource type="AudioStream" uid="uid://dqe1nkt0j03vy" path="res://sounds/CrowbarHitFlesh.wav" id="3_ywdye"]
-[ext_resource type="AudioStream" uid="uid://ce4rv0npbn4hk" path="res://sounds/punch/MaleCough.wav" id="4_a4faw"]
+[ext_resource type="AudioStream" uid="uid://ce4rv0npbn4hk" path="res://sounds/male/MaleCough.wav" id="4_a4faw"]
 [ext_resource type="AudioStream" uid="uid://cpfno1nbepgmx" path="res://sounds/WaterStep1.wav" id="5_ywdye"]
 [ext_resource type="AudioStream" uid="uid://cv4vuwhirr8ty" path="res://sounds/WaterStep2.wav" id="6_a4faw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a4faw"]
+size = Vector3(0.899353, 0.526367, 0.313721)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lwvnx"]
 radius = 0.398093
@@ -251,12 +254,20 @@ mass = 20.0
 rotation_speed = 1.0
 metadata/MaterialType = "Flesh"
 
+[node name="HurtBox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0444944)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04599, 0.236816, -0.740112)
+shape = SubResource("BoxShape3D_a4faw")
+debug_color = Color(0.964466, 5.77569e-07, 0.492589, 0.42)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.233104, 0.0530312)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.233104, 0.0979229)
 shape = SubResource("CapsuleShape3D_lwvnx")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.0367432, 0.102458, -0.328065)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.0367432, 0.102458, -0.283173)
 shape = SubResource("BoxShape3D_hp87d")
 
 [node name="Model" type="Node3D" parent="."]
@@ -329,3 +340,5 @@ wait_time = 2.0
 one_shot = true
 
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
