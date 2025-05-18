@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://drjqypwlc5v5a"]
+
+[ext_resource type="FontFile" uid="uid://doak5knanen" path="res://Fonts/Orbitron/static/Orbitron-Black.ttf" id="1_vn3nw"]
+[ext_resource type="Script" uid="uid://c67c6xsxa3bbb" path="res://auto_label_3d.gd" id="2_wk5e7"]
+
+[node name="Auto_Label3D" type="Label3D"]
+font = ExtResource("1_vn3nw")
+font_size = 50
+outline_size = 0
+autowrap_mode = 1
+script = ExtResource("2_wk5e7")

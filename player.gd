@@ -1,6 +1,11 @@
 extends CharacterBody3D
 
 
+@export var health_max = 50
+@onready var health = health_max
+
+@export var mass = 80.0
+
 @export var speed_ground = 5.0
 @export var speed_fast = 8.0
 @export var speed_air = 2.0
@@ -21,7 +26,12 @@ var _punch_cooldown_timer := 0.0
 @export_range(0, 2, 1) var animationConstrained: int  = 0
 
 
+func _process(delta: float) -> void:
+	$Gizmo_Spine2.rotation = $Head.rotation
+
 func _physics_process(delta: float) -> void:
+	
+	
 	var speed = speed_ground
 
 	if Input.is_action_pressed("player_sprint"):
@@ -67,35 +77,47 @@ func _physics_process(delta: float) -> void:
 	
 	velocity = velocity.limit_length(10)
 	move_and_slide()
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		print(collider)
 
+		if collider is RigidBody3D:
+			collider.apply_central_impulse(-collision.get_normal() * mass / 20)
+		elif collider.has_method("getPushed"):
+			collider.getPushed(-collision.get_normal() * mass / 20, collision.get_position() )
 func kick():
 	$AnimationKick.play("kick")
 	var closeObjects = $Kick.get_overlapping_bodies()
-	print("kick ", closeObjects)
+	print("Kick ", closeObjects)
 	playMeleeSound("Kick")
 	var kick_dir = -transform.basis.z.normalized() * 150
 	for o in closeObjects:
-		if o is RigidBody3D:
+		if o == self:
+			continue
+		if o.has_method("apply_impulse"):
 			var random_offset = Vector3(
 			randf_range(-0.5, 0.5),
 			0.5,
 			randf_range(-0.5, 0.5)
 			)
 			o.apply_impulse(kick_dir, random_offset )
-		playMeleeSound(o.get_meta("MaterialType", "unknown"))
+		if o.has_method("attacked"):
+			o.attacked("Kick",  kick_dir, 15)
 
 func punch():
 	$AnimationPunch.play("punch")
 	var closeObjects = $Head/Punch.get_overlapping_bodies()
-	print("punch ", closeObjects)
+	print("Punch ", closeObjects)
 	playMeleeSound("Punch")
-	var punch_dir = -transform.basis.z.normalized() * 150
+	var punch_dir = -transform.basis.z.normalized() * 100
 	for o in closeObjects:
 		if o == self:
 			continue
-		if o.has_method("apply_central_impulse"):
-			o.apply_central_impulse(punch_dir)
-		playMeleeSound(o.get_meta("MaterialType", "unknown"))
+		if o.has_method("apply_impulse"):
+			o.apply_impulse(punch_dir)
+		if o.has_method("attacked"):
+			o.attacked("Punch",  punch_dir, 8)
 			
 		
 
@@ -106,14 +128,6 @@ func playMeleeSound(meta):
 		$AudioStreamPlayer3D_Punch.play()
 	if(meta == "Kick"):
 		$AudioStreamPlayer3D_Kick.play()
-	if(meta == "Metal"):
-		$AudioStreamPlayer3D_HitMetal.play()
-	if(meta == "MetalLight"):
-		$AudioStreamPlayer3D_HitMetalLight.play()
-	if(meta == "Wall"):
-		$AudioStreamPlayer3D_HitWall.play()
-	if(meta == "Flesh"):
-		$AudioStreamPlayer3D_HitFlesh.play()
 	
 func _unhandled_input(event)-> void:
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
@@ -130,3 +144,8 @@ func _unhandled_input(event)-> void:
 		elif animationConstrained == 1:
 					rotation.y = clamp(rotation.y, deg_to_rad(-20), deg_to_rad(20))
 					$Head.rotation.x = clamp($Head.rotation.x, deg_to_rad(-30), deg_to_rad(30))
+
+
+func get_label_property(prop:String):
+	if (prop == "Health"):
+		return "(♥) %s" % health

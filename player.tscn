@@ -1,21 +1,12 @@
-[gd_scene load_steps=38 format=3 uid="uid://bxfo5t0jv7kbc"]
+[gd_scene load_steps=25 format=3 uid="uid://bxfo5t0jv7kbc"]
 
 [ext_resource type="Script" uid="uid://bhilr0ju5o28p" path="res://player.gd" id="1_4flbx"]
 [ext_resource type="ArrayMesh" uid="uid://0yip68oghp7j" path="res://models/Ranger/player_mesh.tres" id="2_onrkg"]
-[ext_resource type="AudioStream" uid="uid://cs51mgrbxh2yu" path="res://sounds/CrowbarHitHard.wav" id="3_hqtel"]
 [ext_resource type="AudioStream" uid="uid://xphk4r0o8jgf" path="res://sounds/punch/swing-001.ogg" id="3_op7ga"]
-[ext_resource type="AudioStream" uid="uid://cwntqnbmdpde6" path="res://sounds/PaperHit2.wav" id="3_sweqy"]
-[ext_resource type="AudioStream" uid="uid://ijgmx1npyhhr" path="res://sounds/RockHit1.wav" id="4_2hs0m"]
 [ext_resource type="AudioStream" uid="uid://dq8gux4nt1kdd" path="res://sounds/punch/swing-002.ogg" id="4_q13i1"]
-[ext_resource type="AudioStream" uid="uid://ryiyjjvuq3bl" path="res://sounds/MetalHit1.wav" id="4_sweqy"]
-[ext_resource type="AudioStream" uid="uid://dv25pbc5dn5f7" path="res://sounds/WoodHit1.wav" id="5_1jxqw"]
-[ext_resource type="AudioStream" uid="uid://cr768tt4a0jys" path="res://sounds/metal-barrel1.mp3" id="5_b26j0"]
 [ext_resource type="AudioStream" uid="uid://nkiq0tla23nm" path="res://sounds/punch/swing-004.ogg" id="5_pylmc"]
-[ext_resource type="AudioStream" uid="uid://dse1luxh6c85o" path="res://sounds/metal-barrel2.mp3" id="6_n7ghd"]
 [ext_resource type="AudioStream" uid="uid://djx3goljjst37" path="res://sounds/punch/hit-001.ogg" id="7_pbfsw"]
 [ext_resource type="AudioStream" uid="uid://b5i6hhq7aome3" path="res://sounds/punch/hit-004.ogg" id="8_5tmop"]
-[ext_resource type="AudioStream" uid="uid://wodvx23x7oew" path="res://sounds/CombatKnifeHitFlesh.wav" id="11_ivps1"]
-[ext_resource type="AudioStream" uid="uid://dqe1nkt0j03vy" path="res://sounds/CrowbarHitFlesh.wav" id="12_urp6f"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_0b4ue"]
 radius = 0.1
@@ -26,7 +17,7 @@ transparency = 1
 albedo_color = Color(1, 0.164706, 0, 0.364706)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_onrkg"]
-size = Vector3(0.640839, 0.705238, 0.895477)
+size = Vector3(0.455807, 0.429972, 1.23962)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5xgho"]
 radius = 0.25
@@ -36,7 +27,7 @@ height = 1.8
 size = Vector3(0.5, 0.5, 0.506836)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4flbx"]
-size = Vector3(0.640137, 1.03137, 0.94043)
+size = Vector3(0.522339, 1.03137, 1.1958)
 
 [sub_resource type="Animation" id="Animation_i3pqv"]
 length = 0.001
@@ -597,41 +588,8 @@ streams_count = 2
 stream_0/stream = ExtResource("7_pbfsw")
 stream_1/stream = ExtResource("8_5tmop")
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_i3pqv"]
-playback_mode = 1
-random_pitch = 1.16
-random_volume_offset_db = 1.97
-streams_count = 2
-stream_0/stream = ExtResource("3_hqtel")
-stream_1/stream = ExtResource("4_sweqy")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nvl01"]
-playback_mode = 1
-random_pitch = 1.16
-random_volume_offset_db = 1.97
-streams_count = 2
-stream_0/stream = ExtResource("5_b26j0")
-stream_1/stream = ExtResource("6_n7ghd")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_b26j0"]
-playback_mode = 1
-random_pitch = 1.16
-random_volume_offset_db = 1.97
-streams_count = 3
-stream_0/stream = ExtResource("3_sweqy")
-stream_1/stream = ExtResource("4_2hs0m")
-stream_2/stream = ExtResource("5_1jxqw")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_n7ghd"]
-playback_mode = 1
-random_pitch = 1.16
-random_volume_offset_db = 1.97
-streams_count = 2
-stream_0/stream = ExtResource("11_ivps1")
-stream_1/stream = ExtResource("12_urp6f")
-stream_1/weight = 4.191
-
 [node name="Player" type="CharacterBody3D"]
+platform_on_leave = 2
 script = ExtResource("1_4flbx")
 speed_air = 0.05
 mouse_sensitivity_y = 0.745
@@ -639,8 +597,19 @@ pitch_max = 75.0
 kick_cooldown = 0.8
 punch_cooldown = 0.1
 
+[node name="Gizmo_Spine2" type="Node3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.36646e-07, 0.388124, 0.0493238)
+
+[node name="BoneAttachment3D_Spine2" type="BoneAttachment3D" parent="Gizmo_Spine2"]
+transform = Transform3D(-1, 2.08144e-07, -5.14408e-07, 2.21126e-07, 0.99948, 0.032242, 5.20771e-07, 0.0322421, -0.99948, 0, 0, 0)
+bone_name = "Spine2"
+bone_idx = 10
+override_pose = true
+use_external_skeleton = true
+external_skeleton = NodePath("../../Skin/Skeleton3D")
+
 [node name="Head" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.60499, -0.205166)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.605, 0.0240434)
 
 [node name="Grenade Spawner" type="Node3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.446297, 0.117689, -0.124453)
@@ -662,13 +631,12 @@ surface_material_override/0 = SubResource("StandardMaterial3D_n6hdu")
 metadata/_edit_lock_ = true
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.227156)
 cull_mask = 1048573
 current = true
-metadata/_edit_lock_ = true
 
 [node name="Punch" type="Area3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.297903, -0.382377, -0.0628389)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.226, 0, 0)
 collision_layer = 3
 collision_mask = 3
 
@@ -682,26 +650,27 @@ surface_material_override/0 = SubResource("StandardMaterial3D_n6hdu")
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Head/Punch"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.319138, 0.139339, -0.297287)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.102904, 0, -0.46356)
 shape = SubResource("BoxShape3D_onrkg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+visible = false
 shape = SubResource("CapsuleShape3D_5xgho")
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.464134, -0.00341797)
+visible = false
 shape = SubResource("BoxShape3D_u1c27")
 metadata/_edit_lock_ = true
 
 [node name="Kick" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.232987, 0, 0)
-visible = false
 collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Kick"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.152832, -0.371643, -0.423157)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.211731, -0.23563, -0.550842)
 shape = SubResource("BoxShape3D_4flbx")
 
 [node name="AnimationPunch" type="AnimationPlayer" parent="."]
@@ -800,7 +769,7 @@ bones/10/name = "Spine2"
 bones/10/parent = 9
 bones/10/rest = Transform3D(1, -1.15418e-07, -6.37192e-08, 1.00176e-07, 0.979406, -0.201901, 8.57099e-08, 0.201901, 0.979406, -3.07666e-09, 0.0704504, -2.13112e-08)
 bones/10/enabled = true
-bones/10/position = Vector3(-3.07666e-09, 0.0704504, -2.13112e-08)
+bones/10/position = Vector3(-8.00151e-09, 0.0704504, -4.28408e-08)
 bones/10/rotation = Quaternion(0.101474, -3.75511e-08, 5.41781e-08, 0.994838)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/name = "Neck"
@@ -905,7 +874,7 @@ bones/25/name = "Axe"
 bones/25/parent = 0
 bones/25/rest = Transform3D(0.972059, -0.234709, -0.00370978, 0.234716, 0.972062, 0.00182011, 0.00317894, -0.00264, 0.999991, -0.00390682, 0.0463559, 0.115042)
 bones/25/enabled = true
-bones/25/position = Vector3(100, 6.16056e-22, 1.0858e-13)
+bones/25/position = Vector3(100, 1.35598e-20, 1.0858e-13)
 bones/25/rotation = Quaternion(-0.0011229, -0.00173434, 0.118185, 0.992989)
 bones/25/scale = Vector3(1, 1, 1)
 bones/26/name = "mesh0"
@@ -939,19 +908,3 @@ stream = SubResource("AudioStreamRandomizer_7ahtn")
 [node name="AudioStreamPlayer3D_Kick" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0585306, 0.543046, -0.662001)
 stream = SubResource("AudioStreamRandomizer_7lmhl")
-
-[node name="AudioStreamPlayer3D_HitMetal" type="AudioStreamPlayer3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0585306, 0.543046, -0.662001)
-stream = SubResource("AudioStreamRandomizer_i3pqv")
-
-[node name="AudioStreamPlayer3D_HitMetalLight" type="AudioStreamPlayer3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0585306, 0.543046, -0.662001)
-stream = SubResource("AudioStreamRandomizer_nvl01")
-
-[node name="AudioStreamPlayer3D_HitWall" type="AudioStreamPlayer3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0585306, 0.543046, -0.662001)
-stream = SubResource("AudioStreamRandomizer_b26j0")
-
-[node name="AudioStreamPlayer3D_HitFlesh" type="AudioStreamPlayer3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0585306, 0.543046, -0.662001)
-stream = SubResource("AudioStreamRandomizer_n7ghd")

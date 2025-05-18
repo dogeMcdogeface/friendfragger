@@ -1,0 +1,277 @@
+[gd_scene load_steps=18 format=3 uid="uid://gcanop2118xb"]
+
+[ext_resource type="Script" uid="uid://bmrqgyjqoydpi" path="res://spire.gd" id="1_vepkb"]
+[ext_resource type="PackedScene" uid="uid://cle5eaxsd867m" path="res://navigation_target.tscn" id="2_mntsx"]
+[ext_resource type="AudioStream" uid="uid://dfm5ebkdfhbt" path="res://sounds/ElectronicsHum.wav" id="3_mntsx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r8rrl"]
+emission_enabled = true
+emission = Color(0, 0.552941, 0, 1)
+emission_energy_multiplier = 0.21
+backlight_enabled = true
+backlight = Color(1, 0.541241, 0.476759, 1)
+
+[sub_resource type="Animation" id="Animation_4ou0f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.31]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../OmniLight3D_Spire2:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "scale_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_lwvnx"]
+resource_name = "pulse"
+length = 0.7
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.755, 1.31]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../OmniLight3D_Spire2:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.53449),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.755, 1.31]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../OmniLight3D_Spire3:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.53449),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.755, 1.31]
+}
+tracks/3/type = "scale_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 1, 1, 1, 0.7, 1, 0.99, 0.995, 0.99)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4k5bj"]
+_data = {
+&"RESET": SubResource("Animation_4ou0f"),
+&"pulse": SubResource("Animation_lwvnx")
+}
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_iakae"]
+noise_type = 2
+frequency = 0.0123
+offset = Vector3(0, 1402.6, 0)
+fractal_octaves = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r8rrl"]
+in_3d_space = true
+noise = SubResource("FastNoiseLite_iakae")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iakae"]
+roughness = 0.34
+emission_enabled = true
+emission = Color(0.8, 0, 0.121569, 1)
+emission_energy_multiplier = 0.13
+backlight_enabled = true
+backlight = Color(0.8, 0, 0.121569, 1)
+backlight_texture = SubResource("NoiseTexture2D_r8rrl")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7mylh"]
+noise_type = 2
+frequency = 0.0231
+offset = Vector3(0, 512, 0)
+fractal_octaves = 1
+cellular_distance_function = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3k4dh"]
+in_3d_space = true
+noise = SubResource("FastNoiseLite_7mylh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lwvnx"]
+roughness = 0.29
+emission_enabled = true
+emission = Color(0.8, 0, 0.121569, 1)
+emission_energy_multiplier = 0.4
+emission_operator = 1
+emission_texture = SubResource("NoiseTexture2D_3k4dh")
+backlight_enabled = true
+backlight = Color(0.8, 0.256, 0.12, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lwvnx"]
+noise_type = 2
+frequency = 0.0299
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4ou0f"]
+generate_mipmaps = false
+seamless = true
+noise = SubResource("FastNoiseLite_lwvnx")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hp87d"]
+noise_type = 2
+frequency = 0.0255
+offset = Vector3(0, 19.25, 0)
+fractal_octaves = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hp87d"]
+noise = SubResource("FastNoiseLite_hp87d")
+
+[node name="Spire" type="CSGCylinder3D"]
+layers = 5
+use_collision = true
+radius = 9.23682
+height = 160.754
+sides = 50
+cone = true
+material = SubResource("StandardMaterial3D_r8rrl")
+script = ExtResource("1_vepkb")
+
+[node name="AnimationPlayer_Spire" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Spire_Lights/OmniLight3D_Spire")
+libraries = {
+&"": SubResource("AnimationLibrary_4k5bj")
+}
+autoplay = "pulse"
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+layers = 5
+operation = 2
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -75.1343, 0)
+inner_radius = 8.6068
+outer_radius = 11.0119
+sides = 50
+material = SubResource("StandardMaterial3D_iakae")
+
+[node name="SpireRib" type="CSGTorus3D" parent="CSGCombiner3D"]
+transform = Transform3D(1.35906, -0.968817, 0, 5.31396, 0.247777, 0, 0, 0, 1, -4.27047, -49.7475, 0)
+inner_radius = 3.61414
+outer_radius = 11.0119
+sides = 50
+material = SubResource("StandardMaterial3D_lwvnx")
+
+[node name="SpireRib2" type="CSGTorus3D" parent="CSGCombiner3D"]
+transform = Transform3D(0.925925, 0.986552, 0, -5.58882, 0.163447, 0, 0, 0, 0.61, -0.0730014, 29.5076, 0)
+inner_radius = 3.02984
+outer_radius = 6.38626
+sides = 50
+material = SubResource("StandardMaterial3D_lwvnx")
+
+[node name="Spire_Lights" type="Node3D" parent="."]
+
+[node name="OmniLight3D_Spire" type="OmniLight3D" parent="Spire_Lights"]
+transform = Transform3D(1, 6.03988e-14, -1.11019e-15, -6.03988e-14, 1, -6.70512e-29, 1.11019e-15, 1.34105e-28, 1, -0.0782161, 3.00295, 0.0852327)
+light_color = Color(0.451105, 1, 0.844716, 1)
+light_energy = 1.31
+light_projector = SubResource("NoiseTexture2D_4ou0f")
+light_size = 0.343
+light_bake_mode = 1
+shadow_enabled = true
+shadow_blur = 3.692
+omni_range = 24.5948
+omni_attenuation = 0.775
+
+[node name="OmniLight3D_Spire2" type="OmniLight3D" parent="Spire_Lights"]
+transform = Transform3D(1, 6.03988e-14, -1.11019e-15, -6.03988e-14, 1, -6.70512e-29, 1.11019e-15, 1.34105e-28, 1, -0.0782161, -39.5348, 0.0852327)
+light_color = Color(0.451105, 1, 0.844716, 1)
+light_energy = 0.0
+light_projector = SubResource("NoiseTexture2D_4ou0f")
+light_size = 0.639
+light_negative = true
+light_bake_mode = 1
+shadow_enabled = true
+shadow_blur = 3.692
+omni_range = 24.5948
+omni_attenuation = 0.775
+
+[node name="OmniLight3D_Spire3" type="OmniLight3D" parent="Spire_Lights"]
+transform = Transform3D(1, 6.03988e-14, -1.11019e-15, -6.03988e-14, 1, -6.70512e-29, 1.11019e-15, 1.34105e-28, 1, -0.0782161, -49.7767, 0.0852327)
+light_color = Color(0.451105, 1, 0.844716, 1)
+light_energy = 1.0465
+light_projector = SubResource("NoiseTexture2D_4ou0f")
+light_size = 0.639
+light_bake_mode = 1
+shadow_enabled = true
+shadow_blur = 3.692
+omni_range = 24.5948
+omni_attenuation = 0.775
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.20436, 0)
+visible = false
+height = 5.05
+vertices = PackedVector3Array(20.4493, 0, -2.50933, -4.79228, 0, -18.898, -19.4698, 0, 9.37691, 3.00787, 0, 15.8916)
+affect_navigation_mesh = true
+
+[node name="NavigationObstacle3D2" type="NavigationObstacle3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -580.579, 0)
+visible = false
+height = 5.05
+vertices = PackedVector3Array(565.905, 0, -559.503, -555.662, 0, -554.382, -568.466, 0, 592.792, 594.072, 0, 551.821)
+affect_navigation_mesh = true
+
+[node name="Decal" type="Decal" parent="."]
+transform = Transform3D(0.665217, -0.74665, 1.86265e-09, 0.0361613, 0.0322174, -0.998826, 0.745774, 0.664437, 0.0484314, 0, -23.8381, -0.988367)
+visible = false
+size = Vector3(30, 24.3868, 133.129)
+texture_emission = SubResource("NoiseTexture2D_hp87d")
+emission_energy = 0.15
+modulate = Color(1, 0, 0.0745098, 1)
+cull_mask = 1048574
+
+[node name="AudioStreamPlayerAmbience" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -78.0003, 0)
+stream = ExtResource("3_mntsx")
+volume_db = -10.141
+autoplay = true
+
+[node name="NavigationTarget" parent="." instance=ExtResource("2_mntsx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.71246, -79.952, -1.6236)
+
+[node name="NavigationTarget2" parent="." instance=ExtResource("2_mntsx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.71246, -79.952, 1.89282)
+
+[node name="absorbPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -76.4786, 0)

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cle5eaxsd867m"]
+
+[ext_resource type="Script" uid="uid://ks2g8yy4m2cp" path="res://navigation_target.gd" id="1_4x4ac"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4ou0f"]
+height = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5560a"]
+emission_enabled = true
+emission = Color(0, 0.737255, 0, 1)
+
+[node name="NavigationTarget" type="Node3D"]
+script = ExtResource("1_4x4ac")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 2
+mesh = SubResource("CylinderMesh_4ou0f")
+surface_material_override/0 = SubResource("StandardMaterial3D_5560a")
